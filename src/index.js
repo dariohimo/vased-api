@@ -2,6 +2,7 @@ import app from './app.js'
 import {sequelize} from "./database/database.js";
 
 
+
 async function main() {
     try {
         await sequelize.authenticate();
@@ -17,3 +18,4 @@ async function main() {
 
 
 main()
+
