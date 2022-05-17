@@ -9,6 +9,10 @@ import "./models/roleModel.js";
 import "./models/taskModel.js";
 import "./models/student_Classroom.js";
 import "./models/student_Task.js";
+import "./models/attendanceModel.js";
+import "./models/calificationModel.js";
+import "./models/classroomModel.js";
+import "./models/dniTypeModel.js";
 
 async function main() {
     try {
