@@ -6,9 +6,9 @@ import { sequelize } from "./database/database.js";
 import './models/userModel.js';
 import './models/answerModel.js';
 import './models/teacher_ClassroomModel.js';
-import './models/roleModel.js'
-import './models/taskModel.js'
-import './models/student_Classroom.js'
+import './models/roleModel.js';
+import './models/taskModel.js';
+import './models/student_Classroom.js';
 
 
 
