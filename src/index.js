@@ -2,6 +2,16 @@ import "dotenv/config.js";
 import app from "./app.js";
 import { sequelize } from "./database/database.js";
 
+<<<<<<< HEAD
+import './models/userModel.js';
+import './models/answerModel.js';
+import './models/teacher_ClassroomModel.js';
+import './models/roleModel.js';
+import './models/taskModel.js';
+import './models/student_Classroom.js';
+
+
+=======
 import "./models/userModel.js";
 import "./models/answerModel.js";
 import "./models/teacher_ClassroomModel.js";
@@ -9,6 +19,7 @@ import "./models/roleModel.js";
 import "./models/taskModel.js";
 import "./models/student_Classroom.js";
 import "./models/student_Task.js";
+>>>>>>> 983fe9f5cd6c114f2ff5d36e09a401c234f11e3c
 
 async function main() {
     try {
