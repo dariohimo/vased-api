@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
 
-export const Type = sequelize.define('type', {
+export const DniType = sequelize.define('dniType', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

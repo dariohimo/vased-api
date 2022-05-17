@@ -1,6 +1,8 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
 
+import { Answer } from './answerModel.js';
+
 export const Calification = sequelize.define('calification', {
     id: {
         type: DataTypes.INTEGER,
@@ -13,9 +15,8 @@ export const Calification = sequelize.define('calification', {
     },
     grade: {
         type: DataTypes.INTEGER
-    },
-    answer_id: {
-        type: DataTypes.INTEGER,
-        
     }
 });
+
+Answer.hasOne(Calification);
+Calification.belongsTo(Answer);

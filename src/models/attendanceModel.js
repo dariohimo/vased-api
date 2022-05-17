@@ -1,6 +1,8 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
 
+import { Student_classroom } from './student_Classroom.js';
+
 export const Attendance = sequelize.define('attendance', {
     id: {
         type: DataTypes.INTEGER,
@@ -18,8 +20,7 @@ export const Attendance = sequelize.define('attendance', {
         allowNull: false,
     },
 
-    studend_classroom_id: {
-        type: DataTypes.STRING,
-    }
-
 })
+
+Student_classroom.hasMany(Attendance)
+Attendance.belongsTo(Student_classroom)

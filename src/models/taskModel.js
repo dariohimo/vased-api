@@ -6,6 +6,7 @@ import {
     sequelize
 } from '../database/database.js';
 
+import { User } from './userModel.js';
 
 export const Task = sequelize.define('task', {
     id: {
@@ -28,3 +29,6 @@ export const Task = sequelize.define('task', {
     }
 
 });
+
+User.hasMany(Task);
+Task.belongsTo(User);
