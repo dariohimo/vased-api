@@ -5,6 +5,8 @@ import { sequelize } from "./database/database.js";
 import './models/userModel.js'
 import './models/roleModel.js'
 import './models/taskModel.js'
+import './models/student_Classroom.js'
+
 
 async function main() {
     try {
