@@ -2,7 +2,7 @@
 import "dotenv/config.js";
 import app from "./app.js";
 import { sequelize } from "./database/database.js";
-
+import './models/userModel.js'
 
 async function main() {
     try {
@@ -10,6 +10,7 @@ async function main() {
         console.log(
             "Connection --vaseddb-- has been established successfully."
         );
+        await sequelize.sync();
         //port used
         app.listen(3000);
 
