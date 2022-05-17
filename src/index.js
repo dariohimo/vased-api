@@ -2,9 +2,12 @@
 import "dotenv/config.js";
 import app from "./app.js";
 import { sequelize } from "./database/database.js";
+
 import './models/userModel.js';
 import './models/answerModel.js';
 import './models/teacher_ClassroomModel.js';
+import './models/roleModel.js'
+
 
 async function main() {
     try {
