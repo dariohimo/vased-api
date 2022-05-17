@@ -7,11 +7,6 @@ export const Teacher_classroom = sequelize.define('teacher_classroom', {
        type: DataTypes.INTEGER, 
        primaryKey: true,
        autoIncrement: true
-   },
-   createdAT: {
-    type: DataTypes.DATE, 
-   },
-   updatedAT: {
-    type: DataTypes.DATE, 
    }
+   
 });
