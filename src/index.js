@@ -14,7 +14,6 @@ import "./models/calificationModel.js";
 import "./models/classroomModel.js";
 import "./models/dniTypeModel.js";
 
-
 async function main() {
     try {
         await sequelize.authenticate();
