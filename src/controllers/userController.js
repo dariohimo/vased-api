@@ -3,7 +3,8 @@ import { DniType } from "../models/dniTypeModel.js";
 import { Role } from "../models/roleModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { auth } from "../middlewares/auth.js";
+import { authAdmin } from "../middlewares/authAdmin.js";
+
 
 import { Router } from "express";
 
@@ -25,7 +26,7 @@ export const login = async (req, res) => {
             id: user.id,
             name: user.names,
             email: user.email,
-            role: user.role,
+            role: user.roleId,
         },
         };
         const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
@@ -56,7 +57,7 @@ export const register = async (req, res) => {
         password: hashPassword,
         dni,
         dniType: 1,
-        role: 1,
+        roleId: 1,
         });
         await newUser.save();
     
@@ -65,7 +66,7 @@ export const register = async (req, res) => {
             id: newUser.id,
             name: newUser.names,
             email: newUser.email,
-            role: newUser.role,
+            role: newUser.roleId,
         },
         };
         const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
@@ -89,7 +90,26 @@ export const helloWorld = async (req, res) => {
     }
 }
 
+// //route that creates a new role
+// export const createRole = async (req, res) => {
+//     try {
+//         const { name } = req.body;
+//         const role = await Role.findOne({ where: { name } });
+//         if (role) return res.status(400).json({ msg: "Role already exists." });
+    
+//         const newRole = new Role({
+//         name,
+//         });
+//         await newRole.save();
+    
+//         res.json({ msg: "Role created." });
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).send("Server Error");
+//     }
+// }
+
 
 userRouter.get("/login", login);
 userRouter.get("/register", register);
-userRouter.get("/helloWorld", auth, helloWorld);
+userRouter.get("/helloWorld", authAdmin, helloWorld);

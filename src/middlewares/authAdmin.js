@@ -11,7 +11,7 @@ export const authAdmin = async (req, res, next) => {
 		const user = await User.findOne({ where: { id: decoded.user.id } });
 		if (!user) return res.status(400).json({ msg: "Invalid Authentication." });
 
-		if (user.role !== 1) return res.status(400).json({ msg: "Invalid Authentication." });
+		if (user.roleId !== 1) return res.status(400).json({ msg: "Invalid Authentication." });
 
 		req.body.user = user;
 		next();
