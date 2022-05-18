@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
 
-import { Student_classroom } from './student_Classroom.js';
+import { Student_classroom } from './student_ClassroomModel.js';
 
 export const Attendance = sequelize.define('attendance', {
     id: {
