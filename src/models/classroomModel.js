@@ -26,7 +26,7 @@ export const Classroom = sequelize.define('classroom', {
     },
     format: {
         type: DataTypes.STRING,
-        allowNull: false
+
 
     },
     description: {
