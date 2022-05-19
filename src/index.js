@@ -22,7 +22,7 @@ async function main() {
         console.log(
             "Connection --vaseddb-- has been established successfully."
         );
-        await sequelize.sync({ alter: true });
+        await sequelize.sync({ force: true });
         //port used
         app.listen(3000);
 
