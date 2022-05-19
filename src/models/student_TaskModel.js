@@ -3,7 +3,7 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 
 import {Task} from "./taskModel.js";
-import { Student_classroom } from "./student_Classroom.js";
+import { Student_classroom } from "./student_ClassroomModel.js";
 
 export const Student_task = sequelize.define("student_task", {
     id: {
