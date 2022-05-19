@@ -110,7 +110,50 @@ export const helloWorld = async (req, res) => {
 // }
 
 
+// route that returns all users
+export const getUsers = async (req, res) => {
+    try {
+        const users = await User.findAll({
+            attributes: { exclude: ["password"] },
+            include: [
+                {
+                    model: DniType,
+                    attributes: ["name"],
+                },
+                {
+                    model: Role,
+                    attributes: ["name"],
+                },
+            ],
+        });
+        res.json(users);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+}
+
+// route that creates a new DniType
+export const createDniType = async (req, res) => {
+    try {
+        const { name } = req.body;
+        const dniType = await DniType.findOne({ where: { name } });
+        if (dniType) return res.status(400).json({ msg: "DniType already exists." });
+    
+        const newDniType = new DniType({
+        name,
+        });
+        await newDniType.save();
+    
+        res.json({ msg: "DniType created." });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+}
+
 userRouter.get("/login", login);
 userRouter.get("/register", register);
 userRouter.get("/helloWorld", authAdmin, helloWorld);
-
+userRouter.get("/users", getUsers);
+userRouter.post("/createDniType", createDniType);
