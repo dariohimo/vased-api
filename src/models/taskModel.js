@@ -26,6 +26,9 @@ export const Task = sequelize.define('task', {
     },
     format: {
         type: DataTypes.STRING
+    },
+    baseScore: {
+        type: DataTypes.INTEGER
     }
 
 });
