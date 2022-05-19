@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 
 import { sequelize } from "../database/database.js";
 
-import {User} from "./userModel.js";
+import { Student } from "./studentModel.js";
 import  {Classroom}  from "./classroomModel.js";
 
 export const Student_classroom = sequelize.define("student_classroom", {
@@ -16,5 +16,5 @@ export const Student_classroom = sequelize.define("student_classroom", {
     }
 });
 
-User.belongsToMany(Classroom, {through: 'student_classroom'});
-Classroom.belongsToMany(User, {through: 'student_classroom'});
+Student.belongsToMany(Classroom, {through: 'student_classroom'});
+Classroom.belongsToMany(Student, {through: 'student_classroom'});

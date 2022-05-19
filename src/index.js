@@ -7,12 +7,14 @@ import "./models/answerModel.js";
 import "./models/teacher_ClassroomModel.js";
 import "./models/roleModel.js";
 import "./models/taskModel.js";
-import "./models/student_Classroom.js";
-import "./models/student_Task.js";
+import "./models/student_ClassroomModel.js";
+import "./models/student_TaskModel.js";
 import "./models/attendanceModel.js";
 import "./models/calificationModel.js";
 import "./models/classroomModel.js";
 import "./models/dniTypeModel.js";
+import "./models/teacherModel.js";
+import "./models/studentModel.js";
 
 async function main() {
     try {
