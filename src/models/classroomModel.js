@@ -35,5 +35,7 @@ export const Classroom = sequelize.define('classroom', {
 User.hasMany(Classroom, {
     foreignKey: "createdBy",
 });
-Classroom.belongsTo(User);
+Classroom.belongsTo(User, {
+    foreignKey: "createdBy",
+});
 

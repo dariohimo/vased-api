@@ -28,5 +28,7 @@ export const Task = sequelize.define("task", {
 User.hasMany(Task, {
     foreignKey: "createdBy",
 });
-Task.belongsTo(User);
+Task.belongsTo(User, {
+    foreignKey: "createdBy",
+});
 
