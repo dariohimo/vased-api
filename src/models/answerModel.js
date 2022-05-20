@@ -1,8 +1,6 @@
 import { DataTypes } from "sequelize";
-
 import { sequelize } from "../database/database.js";
-
-import { Student_task } from "./student_TaskModel.js";
+import  {User_Task_Classroom} from "./user_task_classroomModel.js";
 
 export const Answer = sequelize.define("answer", {
     id: {
@@ -13,7 +11,13 @@ export const Answer = sequelize.define("answer", {
     answer_text: {
         type: DataTypes.STRING,
     },
+    feedback: {
+        type: DataTypes.TEXT,
+    },
+    score: {
+        type: DataTypes.INTEGER,
+    },
 });
 
-Student_task.hasOne(Answer);
-Answer.belongsTo(Student_task);
+User_Task_Classroom.hasOne(Answer);
+Answer.belongsTo(User_Task_Classroom);

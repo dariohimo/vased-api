@@ -2,7 +2,8 @@ import {Router} from 'express'
 import { login, register } from '../controllers/userController.js'
 
 
-const router = Router()
+export const userRouter = Router()
 
 
-export default router
+userRouter.get("/login", login);
+userRouter.get("/register", register);
