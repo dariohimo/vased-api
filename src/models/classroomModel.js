@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
+import { User } from './userModel.js';
 
 export const Classroom = sequelize.define('classroom', {
     id: {
@@ -7,7 +8,7 @@ export const Classroom = sequelize.define('classroom', {
         primaryKey: true,
         autoIncrement: true
     },
-    capability: {
+    capacity: {
         type: DataTypes.INTEGER,
 
     },
@@ -24,20 +25,15 @@ export const Classroom = sequelize.define('classroom', {
         type: DataTypes.TEXT,
         allowNull: false
     },
-    format: {
-        type: DataTypes.STRING,
-        allowNull: false
-
-    },
     description: {
         type: DataTypes.TEXT,
         allowNull: false
-
-    },
-    createdBy: {
-        type: DataTypes.STRING,
-        allowNull: false
-
     }
 
 })
+
+User.hasMany(Classroom, {
+    foreignKey: "createdBy",
+});
+Classroom.belongsTo(User);
+
