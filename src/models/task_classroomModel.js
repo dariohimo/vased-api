@@ -18,4 +18,6 @@ Classroom.belongsToMany(Task, { through: "task_classroom" });
 User.hasMany(Task_Classroom, {
     foreignKey: "createdBy",
 });
-Task_Classroom.belongsTo(User);
+Task_Classroom.belongsTo(User, {
+    foreignKey: "createdBy",
+});
