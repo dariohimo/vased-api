@@ -9,7 +9,7 @@ export const Answer = sequelize.define("answer", {
         autoIncrement: true,
     },
     answer_text: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
     },
     feedback: {
         type: DataTypes.TEXT,
