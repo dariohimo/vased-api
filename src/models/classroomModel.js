@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
+import { User } from './userModel.js';
 
 export const Classroom = sequelize.define('classroom', {
     id: {
@@ -30,4 +31,9 @@ export const Classroom = sequelize.define('classroom', {
     }
 
 })
+
+User.hasMany(Classroom, {
+    foreignKey: "createdBy",
+});
+Classroom.belongsTo(User);
 
