@@ -7,7 +7,7 @@ export const Classroom = sequelize.define('classroom', {
         primaryKey: true,
         autoIncrement: true
     },
-    capability: {
+    capacity: {
         type: DataTypes.INTEGER,
 
     },
@@ -24,20 +24,10 @@ export const Classroom = sequelize.define('classroom', {
         type: DataTypes.TEXT,
         allowNull: false
     },
-    format: {
-        type: DataTypes.STRING,
-
-
-    },
     description: {
         type: DataTypes.TEXT,
         allowNull: false
-
-    },
-    createdBy: {
-        type: DataTypes.STRING,
-        allowNull: false
-
     }
 
 })
+

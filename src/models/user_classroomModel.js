@@ -1,8 +1,9 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 import { User } from "./userModel.js";
+import { Classroom } from "./classroomModel.js";
 
-export const Student = sequelize.define("student", {
+export const User_Classroom = sequelize.define("user_classroom", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -10,5 +11,5 @@ export const Student = sequelize.define("student", {
     },
 });
 
-User.hasOne(Student);
-Student.belongsTo(User);
+User.belongsToMany(Classroom, {through: "user_classroom"});
+Classroom.belongsToMany(User, {through: "user_classroom"});

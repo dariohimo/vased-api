@@ -4,17 +4,13 @@ import { sequelize } from "./database/database.js";
 
 import "./models/userModel.js";
 import "./models/answerModel.js";
-import "./models/teacher_ClassroomModel.js";
 import "./models/roleModel.js";
 import "./models/taskModel.js";
-import "./models/student_ClassroomModel.js";
-import "./models/student_TaskModel.js";
-import "./models/attendanceModel.js";
-import "./models/calificationModel.js";
 import "./models/classroomModel.js";
 import "./models/dniTypeModel.js";
-import "./models/teacherModel.js";
-import "./models/studentModel.js";
+import "./models/user_task_classroomModel.js";
+import "./models/user_classroomModel.js";
+import "./models/task_classroomModel.js";
 
 async function main() {
     try {

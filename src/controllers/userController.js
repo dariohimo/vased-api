@@ -1,10 +1,10 @@
 import { User } from "../models/userModel.js";
 
+
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-
-//A route to login a user and return a JWT token
+//A route to login a user and return a JWT
 export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -34,7 +34,7 @@ export const login = async (req, res) => {
     }
 };
 
-//A route to register a user and return a JWT token
+//A route to register a user and return a JWT
 export const register = async (req, res) => {
     try {
         const {
@@ -82,7 +82,3 @@ export const register = async (req, res) => {
         res.status(500).send("Server Error");
     }
 };
-
-
-
-
