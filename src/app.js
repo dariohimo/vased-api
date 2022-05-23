@@ -1,5 +1,7 @@
 import express from "express";
-import { userRouter } from "./routes/index.js";
+import {
+    userRouter
+} from "./routes/index.js";
 import classroomRouter from "./routes/classroom.routes.js";
 import taskRouter from './routes/task.routes.js';
 
