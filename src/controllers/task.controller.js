@@ -33,7 +33,6 @@ export const updateTask = async (req, res) => {
         } =
         req.body;
 
-
         const task = await Task.findByPk(id)
         task.name = name
         task.code = code
@@ -48,5 +47,25 @@ export const updateTask = async (req, res) => {
             message: error.message
         });
     }
-
 }
+
+//delete task
+
+export const deleteTask = async (req, res) => {
+    
+    try {
+        const {
+            id
+        } = req.params
+        await Task.destroy({
+            where: {
+                id,
+            }
+        });
+        res.sendStatus(204)
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message
+        });
+    }
+};
