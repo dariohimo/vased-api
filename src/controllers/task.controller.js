@@ -45,7 +45,7 @@ export const getTaskClassrooms = async (req, res) => {
                     model: Task,
                     as: "task",
                     attributes: {
-                        exclude: ["createdAt", "updatedAt", "users"],
+                        exclude: ["createdAt", "updatedAt"],
                     },
                 },
                 {
@@ -54,6 +54,17 @@ export const getTaskClassrooms = async (req, res) => {
                     attributes: {
                         exclude: ["createdAt", "updatedAt"],
                     },
+                    include: [
+                        {
+
+                            model: User,
+                            as: "users",
+                            attributes: {
+                                exclude: ["password", "createdAt", "updatedAt"],
+                            },
+                        },
+                    ],
+
                 },
                 {
                     model: User,
@@ -171,6 +182,24 @@ export const addTaskClassroomToUser = async (req, res) => {
             taskClassroomId: Number(taskClassroomId),
         });
         res.json(user_task_classroom);
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
+    }
+}
+
+export const deleteUserTaskClassroom = async (req, res) => {
+    try {
+        const { userId, taskClassroomId } = req.query;
+        const user_task_classroom = await User_Task_Classroom.findOne({
+            where: {
+                userId: Number(userId),
+                taskClassroomId: Number(taskClassroomId),
+            }
+        });
+        await user_task_classroom.destroy();
+        res.sendStatus(204);
     } catch (error) {
         return res.status(500).json({
             message: error.message,

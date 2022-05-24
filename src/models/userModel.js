@@ -5,6 +5,7 @@ import { sequelize } from "../database/database.js";
 import { Role } from "./roleModel.js";
 import { DniType } from "./dniTypeModel.js";
 
+
 export const User = sequelize.define("user", {
     id: {
         type: DataTypes.INTEGER,
