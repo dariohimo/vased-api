@@ -13,7 +13,7 @@ export const createUser = async (req, res) => {
     return res.status(500).json({ message: error.message  });
 }
 };
- 
+
 /*UPDATE USER */
 
 export const updateUser = async (req, res) => {
