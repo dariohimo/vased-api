@@ -49,3 +49,4 @@ User.belongsTo(Role);
 
 DniType.hasMany(User);
 User.belongsTo(DniType);
+
