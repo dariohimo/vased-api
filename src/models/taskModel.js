@@ -18,7 +18,7 @@ export const Task = sequelize.define("task", {
         type: DataTypes.INTEGER,
     },
     description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
     },
     baseScore: {
         type: DataTypes.INTEGER,
@@ -28,5 +28,7 @@ export const Task = sequelize.define("task", {
 User.hasMany(Task, {
     foreignKey: "createdBy",
 });
-Task.belongsTo(User);
+Task.belongsTo(User, {
+    foreignKey: "createdBy",
+});
 

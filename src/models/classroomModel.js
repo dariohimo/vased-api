@@ -18,7 +18,7 @@ export const Classroom = sequelize.define('classroom', {
 
     },
     code: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
 
     },
     adminDescription: {
@@ -28,12 +28,16 @@ export const Classroom = sequelize.define('classroom', {
     description: {
         type: DataTypes.TEXT,
         allowNull: false
+    },
+    endsAt : {
+        type: DataTypes.DATEONLY
     }
-
 })
 
 User.hasMany(Classroom, {
     foreignKey: "createdBy",
 });
-Classroom.belongsTo(User);
+Classroom.belongsTo(User, {
+    foreignKey: "createdBy",
+});
 
