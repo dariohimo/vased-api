@@ -2,6 +2,8 @@ import { Classroom } from "../models/classroomModel.js";
 import { User } from "../models/userModel.js";
 import { authAdmin } from "../middlewares/authAdmin.js";
 import { User_Classroom } from "../models/user_classroomModel.js";
+import { Task_Classroom } from "../models/task_classroomModel.js";
+import { Task } from "../models/taskModel.js";
 
 // controller that returns all the classrooms with the users that are enrolled in them. If the user is an admin, it returns all the classrooms, otherwise it returns only the classrooms that the user is enrolled in.
 export const getClassrooms = async (req, res) => {
@@ -20,6 +22,13 @@ export const getClassrooms = async (req, res) => {
                         exclude: ["password", "createdAt", "updatedAt"],
                     },
                 },
+                {
+                    model: Task,
+                    as: "tasks",
+                    attributes: {
+                        exclude: ["createdAt", "updatedAt"],
+                    },
+                }
             ],
         });
         console.log(classrooms);
@@ -143,6 +152,38 @@ export const addTeacherToClassroom = async (req, res) => {
 
         const user_classroom = await User_Classroom.create({
             userId: teacherId,
+            classroomId,
+        });
+
+        res.sendStatus(204);
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
+    }
+};
+
+
+export const addTaskToClassroom = async (req, res) => {
+    try {
+        const { taskId, classroomId } = req.query;
+        const task = await Task.findByPk(Number(taskId));
+
+        const taskClassroom = await Task_Classroom.findOne({
+            where: {
+                classroomId,
+                taskId
+            },
+        });
+
+        if (taskClassroom) {
+            return res.status(403).json({
+                message: "Task is already in the classroom",
+            });
+        }
+
+        const task_classroom = await Task_Classroom.create({
+            taskId,
             classroomId,
         });
 

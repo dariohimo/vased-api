@@ -4,7 +4,8 @@ import {
     updateClassroom,
     deleteClassroom,
     getClassrooms,
-    addTeacherToClassroom
+    addTeacherToClassroom,
+    addTaskToClassroom
 } from "../controllers/classroom.controller.js";
 
 import { auth } from "../middlewares/auth.js";
@@ -19,6 +20,8 @@ router.post('/create-classroom', createClassroom)
 router.put('/update-classroom/:id', updateClassroom)
 router.delete('/delete-classroom/:id', deleteClassroom)
 router.post('/add-teacher', addTeacherToClassroom)
+router.post('/add-task', addTaskToClassroom)
+
 
 
 
