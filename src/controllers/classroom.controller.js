@@ -132,15 +132,24 @@ export const deleteClassroom = async (req, res) => {
 };
 
 // controller that creates a new user in a classroom. If user is not teacher, it returns an error. If the user is already enrolled in the classroom, it returns an error. If the user is not enrolled in the classroom, it creates a new user_classroom entry. The userId and classroomId are received in url params.
-export const addTeacherToClassroom = async (req, res) => {
+export const addUserToClassroom = async (req, res) => {
     try {
-        const { teacherId, classroomId } = req.query;
-        const user = await User.findByPk(Number(teacherId));
+        const { userId, classroomId } = req.query;
+        const user = await User.findByPk(Number(userId));
+        const classroom = await Classroom.findByPk(Number(classroomId));
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        if (!classroom) {
+            return res.status(404).json({ message: "Classroom not found" });
+        }
 
         const userClassroom = await User_Classroom.findOne({
             where: {
                 classroomId,
-                userId: teacherId,
+                userId
             },
         });
 
@@ -167,7 +176,6 @@ export const addTeacherToClassroom = async (req, res) => {
 export const addTaskToClassroom = async (req, res) => {
     try {
         const { taskId, classroomId } = req.query;
-        const task = await Task.findByPk(Number(taskId));
 
         const taskClassroom = await Task_Classroom.findOne({
             where: {
@@ -194,3 +202,78 @@ export const addTaskToClassroom = async (req, res) => {
         });
     }
 };
+
+
+export const deleteUserFromClassroom = async (req, res) => {
+    try {
+        const { userId, classroomId } = req.query;
+        const user = await User.findByPk(Number(userId));
+        const classroom = await Classroom.findByPk(Number(classroomId));
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        if (!classroom) {
+            return res.status(404).json({ message: "Classroom not found" });
+        }
+
+        const userClassroom = await User_Classroom.findOne({
+            where: {
+                classroomId,
+                userId
+            },
+        });
+
+        if (!userClassroom) {
+            return res.status(403).json({
+                message: "User is not enrolled in the classroom",
+            });
+        }
+
+        await User_Classroom.destroy({
+            where: {
+                classroomId,
+                userId
+            },
+        });
+
+        res.sendStatus(204);
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
+    }
+}
+
+export const deleteTaskFromClassroom = async (req, res) => {
+    try {
+        const { taskId, classroomId } = req.query;
+
+        const taskClassroom = await Task_Classroom.findOne({
+            where: {
+                classroomId,
+                taskId
+            },
+        });
+
+        if (!taskClassroom) {
+            return res.status(403).json({
+                message: "Task is not in the classroom",
+            });
+        }
+
+        await Task_Classroom.destroy({
+            where: {
+                classroomId,
+                taskId
+            },
+        });
+
+        res.sendStatus(204);
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
+    }
+}

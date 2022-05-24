@@ -4,8 +4,10 @@ import {
     updateClassroom,
     deleteClassroom,
     getClassrooms,
-    addTeacherToClassroom,
-    addTaskToClassroom
+    addUserToClassroom,
+    addTaskToClassroom,
+    deleteUserFromClassroom,
+    deleteTaskFromClassroom,
 } from "../controllers/classroom.controller.js";
 
 import { auth } from "../middlewares/auth.js";
@@ -19,10 +21,10 @@ router.get("/", auth, getClassrooms)
 router.post('/create-classroom', createClassroom)
 router.put('/update-classroom/:id', updateClassroom)
 router.delete('/delete-classroom/:id', deleteClassroom)
-router.post('/add-teacher', addTeacherToClassroom)
+router.post('/add-user', addUserToClassroom)
 router.post('/add-task', addTaskToClassroom)
-
-
+router.delete('/delete-user', deleteUserFromClassroom)
+router.delete('/delete-task', deleteTaskFromClassroom)
 
 
 export default router   
