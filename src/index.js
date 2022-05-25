@@ -20,9 +20,9 @@ async function main() {
         );
         await sequelize.sync({ alter: true });
         //port used
-        app.listen(3000);
+        app.listen(process.env.PORT || 3000);
 
-        console.log("Server on port 3000");
+        console.log("Server on port", process.env.PORT || 3000);
     } catch (error) {
         console.error("Unable to connect to the database:", error);
     }
