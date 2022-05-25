@@ -2,6 +2,9 @@ import "dotenv/config.js";
 import app from "./app.js";
 import { sequelize } from "./database/database.js";
 
+
+
+//models
 import "./models/userModel.js";
 import "./models/answerModel.js";
 import "./models/roleModel.js";
@@ -12,12 +15,11 @@ import "./models/user_task_classroomModel.js";
 import "./models/user_classroomModel.js";
 import "./models/task_classroomModel.js";
 
+
 async function main() {
     try {
+        // sequelize connection
         await sequelize.authenticate();
-        console.log(
-            "Connection --vaseddb-- has been established successfully."
-        );
         await sequelize.sync({ alter: true });
         //port used
         app.listen(process.env.PORT || 3000);
