@@ -1,18 +1,33 @@
 import { Router } from "express";
 import { createTask, updateTask, deleteTask, getTasks, getTaskClassrooms, addTaskClassroomToUser, deleteUserTaskClassroom } from "../controllers/task.controller.js";
 import { auth } from "../middlewares/auth.js";
+import { authTeacher } from "../middlewares/authTeacher.js";
 
 const router = Router()
 
 
 
 // nombredelenrutador.metodo('/nombre-de-la-ruta')
+
+// get all tasks
 router.get("/", auth, getTasks)
+
+// get all task classrooms
 router.get("/tasks-classrooms", auth, getTaskClassrooms)
-router.post('/create-task', createTask)     //created item
-router.put('/update-task/:id', updateTask)  //update item
-router.delete('/delete-task/:id', deleteTask) //delete item
-router.post('/add-user-task-classroom', addTaskClassroomToUser) 
-router.delete('/delete-user-task-classroom', deleteUserTaskClassroom)
+
+// create a task
+router.post('/create-task', authTeacher, createTask)    
+
+// update a task
+router.put('/update-task/:id', authTeacher, updateTask) 
+
+// delete a task
+router.delete('/delete-task/:id', authTeacher, deleteTask) 
+
+// add a task classroom to a user
+router.post('/add-user-task-classroom', authTeacher, addTaskClassroomToUser) 
+
+// delete a user task classroom
+router.delete('/delete-user-task-classroom', authTeacher, deleteUserTaskClassroom)
 
 export default router
