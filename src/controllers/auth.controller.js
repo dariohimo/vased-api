@@ -46,6 +46,8 @@ export const register = async (req, res) => {
             birthDate,
             city,
             country,
+            roleId,
+            dniTypeId,
         } = req.body;
         const user = await User.findOne({ where: { email } });
         if (user) return res.status(400).json({ msg: "User already exists." });
@@ -59,8 +61,11 @@ export const register = async (req, res) => {
             email,
             password: hashPassword,
             dni,
-            dniType: 1,
-            roleId: 1,
+            dniTypeId,
+            roleId,
+            birthDate,
+            city,
+            country,
         });
         await newUser.save();
 
