@@ -45,6 +45,7 @@ export const updateClassroom = async (req, res) => {
         await classroom.save()
 
         res.json(classroom)
+        
     } catch (error) {
         return res.status(500).json({
             message: error.message
