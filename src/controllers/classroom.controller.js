@@ -52,9 +52,11 @@ export const getClassrooms = async (req, res) => {
             res.json(processedClassrooms);
         } else {
             const userClassrooms = processedClassrooms.filter((classroom) => {
-                return classroom.users.some(
-                    (userInClassroom) => userInClassroom.id === user.id
-                );
+                return classroom.users.teachers.some(
+                    (userInClassroom) => userInClassroom.id === user.user.id
+                ) || classroom.users.students.some(
+                    (userInClassroom) => userInClassroom.id === user.user.id
+                ) ;
             });
             res.json(userClassrooms);
         }
