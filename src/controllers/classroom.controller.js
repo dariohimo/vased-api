@@ -9,7 +9,7 @@ import { Task } from "../models/taskModel.js";
 export const getClassrooms = async (req, res) => {
     try {
         const { user } = req.body;
-        console.log(user);
+        //console.log(user);
         const classrooms = await Classroom.findAll({
             attributes: {
                 exclude: ["createdAt", "updatedAt"],
@@ -31,7 +31,7 @@ export const getClassrooms = async (req, res) => {
                 }
             ],
         });
-        console.log(classrooms);
+        //console.log(classrooms);
         const processedClassrooms = classrooms.map((classroom) => {
             const teachers = classroom.users.filter(
                 (user) => user.roleId === 2
@@ -52,9 +52,11 @@ export const getClassrooms = async (req, res) => {
             res.json(processedClassrooms);
         } else {
             const userClassrooms = processedClassrooms.filter((classroom) => {
-                return classroom.users.some(
-                    (userInClassroom) => userInClassroom.id === user.id
-                );
+                return classroom.users.teachers.some(
+                    (userInClassroom) => userInClassroom.id === user.user.id
+                ) || classroom.users.students.some(
+                    (userInClassroom) => userInClassroom.id === user.user.id
+                ) ;
             });
             res.json(userClassrooms);
         }
@@ -76,6 +78,7 @@ export const createClassroom = async (req, res) => {
             endsAt,
             createdBy,
         } = req.body;
+    console.log(req)
 
         const newClassroom = await Classroom.create({
             name,
@@ -131,7 +134,11 @@ export const deleteClassroom = async (req, res) => {
     }
 };
 
-// controller that creates a new user in a classroom. If user is not teacher, it returns an error. If the user is already enrolled in the classroom, it returns an error. If the user is not enrolled in the classroom, it creates a new user_classroom entry. The userId and classroomId are received in url params.
+// controller that creates a new user in a classroom. If user is not teacher, 
+//it returns an error. If the user is already enrolled in the classroom, it returns an error.
+// If the user is not enrolled in the classroom, it creates a new user_classroom entry.
+//  The userId and classroomId are received in url params.
+
 export const addUserToClassroom = async (req, res) => {
     try {
         const { userId, classroomId } = req.query;
@@ -160,7 +167,7 @@ export const addUserToClassroom = async (req, res) => {
         }
 
         const user_classroom = await User_Classroom.create({
-            userId: teacherId,
+            userId,
             classroomId,
         });
 

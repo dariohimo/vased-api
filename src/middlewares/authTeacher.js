@@ -13,7 +13,7 @@ export const authTeacher = async (req, res, next) => {
         if (!user)
             return res.status(400).json({ msg: "Invalid Authentication." });
 
-        if (user.roleId !== 2)
+        if (user.roleId !== 2 && user.roleId !== 1)
             return res.status(400).json({ msg: "Invalid Authentication." });
 
         req.body.user = user;

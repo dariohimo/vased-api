@@ -11,20 +11,35 @@ import {
 } from "../controllers/classroom.controller.js";
 
 import { auth } from "../middlewares/auth.js";
+import { authAdmin } from "../middlewares/authAdmin.js";
+import { authTeacher } from "../middlewares/authTeacher.js";
 
-const router = Router()
-
-
+const router = Router();
 
 // nombredelenrutador.metodo('/nombre-de-la-ruta')
-router.get("/", auth, getClassrooms)
-router.post('/create-classroom', createClassroom)
-router.put('/update-classroom/:id', updateClassroom)
-router.delete('/delete-classroom/:id', deleteClassroom)
-router.post('/add-user', addUserToClassroom)
-router.post('/add-task', addTaskToClassroom)
-router.delete('/delete-user', deleteUserFromClassroom)
-router.delete('/delete-task', deleteTaskFromClassroom)
 
+// get all classrooms
+router.get("/", auth, getClassrooms);
 
-export default router   
+// create a classroom
+router.post("/create-classroom", authAdmin, createClassroom);
+
+// update a classroom
+router.put("/update-classroom/:id", authAdmin, updateClassroom);
+
+// delete a classroom
+router.delete("/delete-classroom/:id", authAdmin, deleteClassroom);
+
+// add a user to a classroom
+router.post("/add-user", authAdmin, addUserToClassroom);
+
+// add a task to a classroom
+router.post("/add-task", authTeacher, addTaskToClassroom);
+
+// delete a user from a classroom
+router.delete("/delete-user", authAdmin, deleteUserFromClassroom);
+
+// delete a task from a classroom
+router.delete("/delete-task", authTeacher, deleteTaskFromClassroom);
+
+export default router;
