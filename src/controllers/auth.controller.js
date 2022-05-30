@@ -1,6 +1,5 @@
 import { User } from "../models/userModel.js";
 
-
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -27,7 +26,15 @@ export const login = async (req, res) => {
             expiresIn: "1h",
         });
 
-        res.json({ token });
+        res.json({
+            token,
+            user: {
+                id: user.id,
+                name: user.names + " " + user.lastNames,
+                email: user.email,
+                role: user.roleId,
+            },
+        });
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
@@ -81,7 +88,15 @@ export const register = async (req, res) => {
             expiresIn: "1h",
         });
 
-        res.json({ token });
+        res.json({
+            token,
+            user: {
+                id: newUser.id,
+                name: newUser.names,
+                email: newUser.email,
+                role: newUser.roleId,
+            },
+        });
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
