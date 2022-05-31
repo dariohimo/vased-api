@@ -68,7 +68,6 @@ export const getClassrooms = async (req, res) => {
 
 export const createClassroom = async (req, res) => {
     try {
-        const { user } = req.body;
         const {
             capacity,
             name,
@@ -76,6 +75,7 @@ export const createClassroom = async (req, res) => {
             adminDescription,
             description,
             endsAt,
+            user
         } = req.body;
 
         const newClassroom = await Classroom.create({
@@ -85,7 +85,7 @@ export const createClassroom = async (req, res) => {
             adminDescription,
             description,
             endsAt,
-            createdBy: user.user.id,
+            createdBy: user.id,
         });
         res.json(newClassroom);
     } catch (error) {
