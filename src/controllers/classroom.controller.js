@@ -1,6 +1,5 @@
 import { Classroom } from "../models/classroomModel.js";
 import { User } from "../models/userModel.js";
-import { authAdmin } from "../middlewares/authAdmin.js";
 import { User_Classroom } from "../models/user_classroomModel.js";
 import { Task_Classroom } from "../models/task_classroomModel.js";
 import { Task } from "../models/taskModel.js";
@@ -69,6 +68,7 @@ export const getClassrooms = async (req, res) => {
 
 export const createClassroom = async (req, res) => {
     try {
+        const { user } = req.body;
         const {
             capacity,
             name,
@@ -76,9 +76,7 @@ export const createClassroom = async (req, res) => {
             adminDescription,
             description,
             endsAt,
-            createdBy,
         } = req.body;
-    console.log(req)
 
         const newClassroom = await Classroom.create({
             name,
@@ -87,7 +85,7 @@ export const createClassroom = async (req, res) => {
             adminDescription,
             description,
             endsAt,
-            createdBy,
+            createdBy: user.user.id,
         });
         res.json(newClassroom);
     } catch (error) {

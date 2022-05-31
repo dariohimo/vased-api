@@ -4,7 +4,11 @@ import { User } from "../models/userModel.js";
 //Middleware to authorize a teacher
 export const authTeacher = async (req, res, next) => {
     try {
-        const token = req.header("Authorization");
+        let token = null
+		if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+			token = req.headers.authorization.split(' ')[1]
+			
+		}
         if (!token)
             return res.status(400).json({ msg: "Invalid Authentication." });
 
