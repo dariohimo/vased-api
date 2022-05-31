@@ -99,13 +99,14 @@ export const getTaskClassrooms = async (req, res) => {
 export const createTask = async (req, res) => {
     //console.log(req)
     try {
-        const { name, code, description, baseScore } = req.body;
+        const { name, code, description, baseScore, user } = req.body;
 
         const newTask = await Task.create({
             name,
             code,
             description,
             baseScore,
+            createdBy: user.id,
         });
         res.json(newTask);
     } catch (error) {
