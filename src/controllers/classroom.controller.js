@@ -1,6 +1,5 @@
 import { Classroom } from "../models/classroomModel.js";
 import { User } from "../models/userModel.js";
-import { authAdmin } from "../middlewares/authAdmin.js";
 import { User_Classroom } from "../models/user_classroomModel.js";
 import { Task_Classroom } from "../models/task_classroomModel.js";
 import { Task } from "../models/taskModel.js";
