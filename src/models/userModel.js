@@ -5,7 +5,6 @@ import { sequelize } from "../database/database.js";
 import { Role } from "./roleModel.js";
 import { DniType } from "./dniTypeModel.js";
 
-
 export const User = sequelize.define("user", {
     id: {
         type: DataTypes.INTEGER,
@@ -14,11 +13,9 @@ export const User = sequelize.define("user", {
     },
     names: {
         type: DataTypes.STRING,
-        allowNull: false,
     },
     lastNames: {
         type: DataTypes.STRING,
-        allowNull: false,
     },
     dni: {
         type: DataTypes.INTEGER,
@@ -29,7 +26,6 @@ export const User = sequelize.define("user", {
     },
     password: {
         type: DataTypes.STRING,
-        allowNull: false,
     },
     birthDate: {
         type: DataTypes.DATE,
@@ -43,11 +39,22 @@ export const User = sequelize.define("user", {
     lastLogin: {
         type: DataTypes.DATE,
     },
+    isActive: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+    },
 });
 
-Role.hasMany(User);
-User.belongsTo(Role);
+Role.hasMany(User, {
+    foreignKey: {
+        allowNull: false,
+    },
+});
+User.belongsTo(Role, {
+    foreignKey: {
+        allowNull: false,
+    },
+});
 
 DniType.hasMany(User);
 User.belongsTo(DniType);
-

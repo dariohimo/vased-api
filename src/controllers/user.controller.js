@@ -3,30 +3,24 @@ import { Classroom } from "../models/classroomModel.js";
 import { Task_Classroom } from "../models/task_classroomModel.js";
 import { User_Task_Classroom } from "../models/user_task_classroomModel.js";
 import { Answer } from "../models/answerModel.js";
+import { sendActivateAccount } from "../services/mails/activateAccount.js";
 
-
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export const createUser = async (req, res) => {
     try {
-        const { names, lastNames, dni, email, birthDate, city, country } = req.body;
+        const { names, lastNames, dni, email, birthDate, city, country, roleId, dniTypeId } =
+            req.body;
+
+        // generate random alphanumeric password
+        const password = Math.random().toString(36).slice(-8);
+
+        // hash password
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(password, salt);
 
         const newUser = await User.create({
-            names, lastNames, dni, email, birthDate, city, country, password:123
-        });
-        res.json(newUser);
-} catch  (error) {
-    return res.status(500).json({ message: error.message  });
-}
-};
-
-/*UPDATE USER */
-
-export const updateUser = async (req, res) => {
-    try {
-        const {
-            id
-        } = req.params;
-        const {
             names,
             lastNames,
             dni,
@@ -34,164 +28,183 @@ export const updateUser = async (req, res) => {
             birthDate,
             city,
             country,
-            
-        } =
-        req.body;
-
-
-        const user = await User.findByPk(id)
-
-        user.names = names
-        user.lastNames = lastNames
-        user.dni = dni
-        user.email = email
-        user.birthDate = birthDate
-        user.city = city
-        user.country = country
-        user.password = user.password
-        await user.save()
-
-        res.json(user)
-    } catch (error) {
-        return res.status(500).json({
-            message: error.message
+            password: hashPassword,
+            roleId,
+            dniTypeId,
         });
+
+        // generate token
+        const payload = {
+            user: {
+                id: newUser.id,
+                name: newUser.names,
+                email: newUser.email,
+                role: newUser.roleId,
+            },
+        };
+        const token = jwt.sign(payload, process.env.ACTIVATION_TOKEN_SECRET + hashPassword, {
+            expiresIn: "7d",
+        });
+
+        const url = `${process.env.FRONTEND_URL}/activate-account/${newUser.id}/${token}`;
+
+        // send email
+        await sendActivateAccount(newUser.email, url);
+
+        res.json(newUser);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
     }
+};
 
-}
+/*UPDATE USER */
 
-/* DELETE USER */
-
-export const deleteUser = async (req, res) => {
-    
+export const updateUser = async (req, res) => {
     try {
-        const {
-            id
-        } = req.params
-        await User.destroy({
-            where: {
-                id,
-            }
-        });
-        res.sendStatus(204)
+        const { id } = req.params;
+        const { names, lastNames, dni, email, birthDate, city, country } =
+            req.body;
+
+        const user = await User.findByPk(id);
+
+        user.names = names;
+        user.lastNames = lastNames;
+        user.dni = dni;
+        user.email = email;
+        user.birthDate = birthDate;
+        user.city = city;
+        user.country = country;
+        user.password = user.password;
+        await user.save();
+
+        res.json(user);
     } catch (error) {
         return res.status(500).json({
-            message: error.message
+            message: error.message,
         });
     }
 };
 
+/* DELETE USER */
+
+export const deleteUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await User.destroy({
+            where: {
+                id,
+            },
+        });
+        res.sendStatus(204);
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
+    }
+};
 
 export const getUser = async (req, res) => {
     try {
-        const {
-            id
-        } = req.params
+        const { id } = req.params;
         const user = await User.findByPk(id, {
             include: [
                 {
                     model: Classroom,
-                    as: 'classrooms',
+                    as: "classrooms",
                     attributes: {
-                        exclude: ['createdAt', 'updatedAt']
-                    }
+                        exclude: ["createdAt", "updatedAt"],
+                    },
                 },
                 {
                     model: Task_Classroom,
-                    as: 'task_classrooms',
+                    as: "task_classrooms",
                 },
-            ]
-        })
+            ],
+        });
 
         // find all answers made by user through User_Task_Classroom
-        const user_task_classrooms = await User_Task_Classroom.findAll(
-            {
-                where: {
-                    userId: id
+        const user_task_classrooms = await User_Task_Classroom.findAll({
+            where: {
+                userId: id,
+            },
+            attributes: {
+                exclude: ["createdAt", "updatedAt"],
+            },
+            include: [
+                {
+                    model: Answer,
+                    as: "answer",
+                    attributes: {
+                        exclude: ["createdAt", "updatedAt"],
+                    },
                 },
-                attributes: {
-                    exclude: ['createdAt', 'updatedAt']
-                },
-                include: [
-                    {
-                        model: Answer,
-                        as: 'answer',
-                        attributes: {
-                            exclude: ['createdAt', 'updatedAt']
-                        }
-                    }
-                ]
-            }
-        )
+            ],
+        });
 
-        const answers = user_task_classrooms.map(user_task_classroom => {
-            return user_task_classroom.answer
-        }
-        )
+        const answers = user_task_classrooms.map((user_task_classroom) => {
+            return user_task_classroom.answer;
+        });
         res.json({
             ...user.dataValues,
             user_task_classrooms,
-            answers
-        })
+            answers,
+        });
     } catch (error) {
         return res.status(500).json({
-            message: error.message
+            message: error.message,
         });
     }
-}
+};
 
 export const getUsers = async (req, res) => {
     try {
         const users = await User.findAll({
             attributes: {
-                exclude: ['password', 'createdAt', 'updatedAt']
+                exclude: ["password", "createdAt", "updatedAt"],
             },
             include: [
                 {
                     model: Classroom,
-                    as: 'classrooms',
+                    as: "classrooms",
                     attributes: {
-                        exclude: ['createdAt', 'updatedAt']
-                    }
+                        exclude: ["createdAt", "updatedAt"],
+                    },
                 },
                 {
                     model: Task_Classroom,
-                    as: 'task_classrooms',
+                    as: "task_classrooms",
                 },
-            ]
-        })
+            ],
+        });
 
         // find all answers made by user through User_Task_Classroom
-        const user_task_classrooms = await User_Task_Classroom.findAll(
-            {
-                attributes: {
-                    exclude: ['createdAt', 'updatedAt']
+        const user_task_classrooms = await User_Task_Classroom.findAll({
+            attributes: {
+                exclude: ["createdAt", "updatedAt"],
+            },
+            include: [
+                {
+                    model: Answer,
+                    as: "answer",
+                    attributes: {
+                        exclude: ["createdAt", "updatedAt"],
+                    },
                 },
-                include: [
-                    {
-                        model: Answer,
-                        as: 'answer',
-                        attributes: {
-                            exclude: ['createdAt', 'updatedAt']
-                        }
-                    }
-                ]
-            }
-        )
+            ],
+        });
 
-        const answers = user_task_classrooms.map(user_task_classroom => {
-            return user_task_classroom.answer
-        }
-        )
+        const answers = user_task_classrooms.map((user_task_classroom) => {
+            return user_task_classroom.answer;
+        });
         const data = {
             users,
             user_task_classrooms,
-            answers
-        }
-        res.json(data.users)
+            answers,
+        };
+        res.json(data.users);
     } catch (error) {
         return res.status(500).json({
-            message: error.message
+            message: error.message,
         });
     }
-}
+};
