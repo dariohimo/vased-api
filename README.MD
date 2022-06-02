@@ -154,7 +154,96 @@ Entregables
 
 ___
 ---
- 
+
+ **LMS API:**
+
+---
+---
+
+<table BORDER=5 >
+
+  <tr  >
+    <th COLSPAN=8 >Auth</th>     
+  </tr>
+  <tr style="background-color:purple">
+  <td></td>
+    <td><img src="./docs/api/auth/login.png" width=100 height=100 alt="Login" >  </td>
+    <td><img src="./docs/api/auth/register.png" width=100 height=100 alt="Register" ></td>
+    <td><img src="./docs/api/auth/ActivateAccount.png" width=100 height=100" alt="Activate_Account" >  </td>
+    <td><img src="./docs/api/auth/ForgotPassword.png " width=100 height=100" alt="Forgot_Password" >  </td>
+     <td><img src="./docs/api/auth/ResetPassword.png " width=100 height=100" alt="Reset_Password" >  </td>
+     <td></td><td></td>
+  </tr>
+   
+   <tr aling="center">
+     
+   <th COLSPAN=8 > User </th>
+   
+  </tr>
+  <tr style="background-color:purple">
+   <td></td>
+    <td><img src="./docs/api/user/create-user.png" width=100 height=100" >  </td>
+    <td><img src="./docs/api/user/delete-user.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/user/getUsers.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/user/getUser.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/user/update-user.png" width=100 height=100 ></td>
+     <td></td><td></td>
+  </tr>
+  
+  
+
+ <tr>
+     
+   <th COLSPAN=8> Classroms </th>
+   
+  </tr>
+  <tr style="background-color:purple">
+    <td><img src="./docs/api/classroom/add-task.png" width=100 height=100 >  </td>
+    <td><img src="./docs/api/classroom/add-user.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/classroom/create.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/classroom/delete-task.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/classroom/delete-user.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/classroom/delete.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/classroom/getClassroom.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/classroom/update.png" width=100 height=100 ></td>
+  </tr> 
+
+  <th COLSPAN=8> Task </th>
+   
+  </tr>
+  <tr style="background-color:purple">
+    <td></td>
+    <td><img src="./docs/api/task/create-task.png" width=100 height=100 >  </td>
+    <td><img src="./docs/api/task/delete-task-clasroom.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/task/delete-task.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/task/getTask-classroom.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/task/getTasks.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/task/update.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/task/user-task-classroom.png" width=100 height=100 ></td>
+   
+  </tr>   
+
+   <th COLSPAN=8> Utils </th>
+   
+  </tr>
+  <tr style="background-color:purple">
+    <td></td><td></td>
+    <td></td>
+    <td><img src="./docs/api/utils/create-dnitype.png" width=100 height=100 >  </td>
+    <td><img src="./docs/api/utils/create-role.png" width=100 height=100 ></td>
+    <td></td>
+    <td></td> <td></td>
+   
+  </tr>   
+
+
+ </table>
+
+---
+---
+
+**Code:**
+
 ```nodejs
     Technologies nodejs:
 
@@ -169,39 +258,15 @@ ___
     "sequelize": "^6.19.0"
 
  ```   
----
----
 
-**Code:**
 
----
 
-<table >
 
-  <tr style="background-color:orange">
-    <td style="color:blue">Auth</td>
-     
-  </tr>
-  <tr style="background-color:purple">
-    <td><img src="https://openclipart.org/image/2400px/svg_to_png/28580/kablam-Number-Animals-1.png" width=100 height=100></td>
-    <td><img src="https://openclipart.org/image/2400px/svg_to_png/28580/kablam-Number-Animals-1.png" width=100 height=100></td>
-    <td><img src="https://openclipart.org/download/275234/4_Row.svg" width=100 height=100" width=270 height=480>  </td>
-  </tr>
-   
-   <tr style="background-color:orange">
-   <td style="color:blue"> User </td>
-   
-  </tr>
-  <tr style="background-color:purple">
-    <td><img src="https://openclipart.org/image/2400px/svg_to_png/28580/kablam-Number-Animals-1.png" width=100 height=100></td>
-    <td><img src="https://openclipart.org/image/2400px/svg_to_png/28580/kablam-Number-Animals-1.png" width=100 height=100></td>
-    <td><img src="https://openclipart.org/download/275234/4_Row.svg" width=100 height=100" width=270 height=480></td>
-  </tr>
- </table>
 
 ---
 ---
-<summary style="color:green" > links proyect </summary>
+
+<summary style="color:green" > links proyect LMS </summary>
 
 ---
 
@@ -245,6 +310,5 @@ ___
 ---
 
 <strong> Cohorte No.4 Proyecto Final << Junio 3 de 2022 >> </strong>
-<summary style="color:orange" > Cohorte No.4 Proyecto Final << Junio 3 de 2022 >> </summary>
 
 ---
