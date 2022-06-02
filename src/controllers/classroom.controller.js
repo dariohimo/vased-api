@@ -68,7 +68,6 @@ export const getClassrooms = async (req, res) => {
 
 export const createClassroom = async (req, res) => {
     try {
-        const { user } = req.body;
         const {
             capacity,
             name,
@@ -76,6 +75,7 @@ export const createClassroom = async (req, res) => {
             adminDescription,
             description,
             endsAt,
+            user
         } = req.body;
 
         const newClassroom = await Classroom.create({
@@ -85,7 +85,7 @@ export const createClassroom = async (req, res) => {
             adminDescription,
             description,
             endsAt,
-            createdBy: user.user.id,
+            createdBy: user.id,
         });
         res.json(newClassroom);
     } catch (error) {
@@ -108,7 +108,21 @@ export const updateClassroom = async (req, res) => {
         classroom.endsAt = endsAt;
         await classroom.save();
 
+<<<<<<< HEAD
         res.json(classroom);
+=======
+        const classroom = await Classroom.findByPk(id)
+        classroom.capacity = capacity
+        classroom.name = name
+        classroom.code = code
+        classroom.adminDescription = adminDescription
+        classroom.description = description
+        classroom.endsAt = endsAt
+        await classroom.save()
+
+        res.json(classroom)
+        
+>>>>>>> a47f759c438119b7ea0817c1e13c73e9f42030b1
     } catch (error) {
         return res.status(500).json({
             message: error.message,
