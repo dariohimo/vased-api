@@ -1,6 +1,6 @@
 <p align="center"> 
-<img src="docs/linea.gif" width="100%" hight="5px" >
-<img src="docs/linea.gif" width="100%" hight="2px" >
+<img src="docs/linea.gif" width="100%" height="1px" >
+<img src="docs/linea.gif" width="100%" height="1px" >
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@ ___
   <img src="https://openclipart.org/download/275234/4_Row.svg" width=25 height=25" >
 </p>
 <p align="center"> 
-<img src="docs/linea.gif" width="100%" hight="5px" >
+<img src="docs/linea.gif" width="100%" height="2px" >
 </p>
 
 ___
@@ -34,14 +34,17 @@ ___
 <details>
 <summary>  LMS VASED </summary>
 
-```
+<!--
 Andres Esteban Patino
 
 05.05.2022
 
-Bienvenido a tu proyecto final de desarrollo web full stack, te felicitamos por haber llegado hasta este punto de tu formación. Sabemos que tienes todas las capacidades para ser un profesional altamente exitoso y por eso te presentamos el último reto académico de Prográmate y Simplon, antes de salir al mundo laboral.   Pertenecerás a un equipo de desarrollo  en el cual deberás desempeñar un role como desarrollador y llegar a la terminación funcional de la aplicación que esté propuesta en el brief de proyecto detallado.  El cual deberá seguir los estándares propuestos detallados en el documento "Guía de competencias a evaluar" y que será desarrollado con el stack MERN. Este será tu proyecto master con el que lograrás corroborar todas las competencias necesarias para certificarte como desarrollador web Full Stack con Prográmate y Simplon.
-``` 
+-->
+
 ```
+Bienvenido a tu proyecto final de desarrollo web full stack, te felicitamos por haber llegado hasta este punto de tu formación. Sabemos que tienes todas las capacidades para ser un profesional altamente exitoso y por eso te presentamos el último reto académico de Prográmate y Simplon, antes de salir al mundo laboral.   Pertenecerás a un equipo de desarrollo  en el cual deberás desempeñar un role como desarrollador y llegar a la terminación funcional de la aplicación que esté propuesta en el brief de proyecto detallado.  El cual deberá seguir los estándares propuestos detallados en el documento "Guía de competencias a evaluar" y que será desarrollado con el stack MERN. Este será tu proyecto master con el que lograrás corroborar todas las competencias necesarias para certificarte como desarrollador web Full Stack con Prográmate y Simplon.
+
+
 Marcos de competencias
 Desarrollador web y web móvil
 
@@ -49,8 +52,7 @@ Recurso(s)
 https://fundacionvased.org/
 landing
 
-```
-```
+
 Contexto del proyecto
 
 La fundación VASED tiene la necesidad de migrar su plataforma hecha en moddle a un desarrollo a medida, por lo que precisa un equipo de desarrollo para poner los cimientos de la nueva plataforma fijando un mínimo producto viable con un mes de plazo.
@@ -376,20 +378,27 @@ ___
 
 ***
 <p align="center"> 
-<img src="docs/linea.gif" width="100%" hight="5px" >
+<img src="docs/linea.gif" width="100%" height="1px >
 </p>
 
 ### <p align="center">  Coder Project Educamas </p>
 
 <p align="center"> 
-<img src="docs/linea.gif" width="100%" hight="5px" >
+<img src="docs/linea.gif" width="100%" height="1px" >
 </p>
 
 ___
 
+
+
 **github** :octocat:
 ___
 ---
+
+<p align="center"> 
+<img src="docs/linea_estrella.gif" width="80%" height="25px" >
+</p>
+
 - 👩‍💻 **[Daniela Puerta Castrillón]( https://github.com/daniela8896)**
 - 👩‍💻 **[Sara Salas]( https://github.com/sarisp3260 )**
 - 👩‍💻 **[Christian Javier Ruiz]( https://github.com/Lord-Mugen )**
@@ -398,6 +407,11 @@ ___
 - 👨‍💻 **[Albert Quintanilla]( https://github.com/Jhuset2003)**
 - 👨‍💻 **[Enmanuel Pereira]( https://github.com/iElectro13)**
 - 👨‍💻 **[Dario Higuera Moreno]( https://github.com/dariohimo)**
+  
+<p align="center"> 
+<img src="docs/linea.gif" width="100%" height="1px" >
+</p>
+
 ___
 ---
 
