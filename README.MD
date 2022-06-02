@@ -308,37 +308,37 @@ ___
 <hr>
 <hr>
 
-<summary style="color:green" > links proyect LMS </summary>
+<summary style="color: green" > links proyect LMS </summary>
 
 ---
 
-<strong style="color:green"> Repository </strong>
+<strong style="color: green"> Repository </strong>
 
-[GitHub **LMS VASED** Backend ](https://github.com/dariohimo//vased-api "LMS VASED")
-
----
-
-[GitHub **LMS VASED** Fronted ](https://github.com/Jhuset2003/VasedWeb "LMS VASED")
+[GitHub **LMS VASED Backend** ](https://github.com/dariohimo//vased-api " Repo Backend")
 
 ---
 
----
-
-<summary style="color:green" > Deploy Backend </summary>
-
----
-
-[Heroku Vased LMS](https://vased-api.herokuapp.com/api/v1/ "BACKEND")
+[GitHub **LMS VASED Fronted** ](https://github.com/Jhuset2003/VasedWeb " Repo Fronted")
 
 ---
 
 ---
 
-<summary style="color:green" > Deploy Fronted </summary>
+<summary style="color: green" > Deploy Backend </summary>
 
 ---
 
-[Vercel Vased LMS]( https://vased-web.vercel.app "FRONTED")
+[ **Deploy Heroku** LMS Vased](https://vased-api.herokuapp.com/api/v1/ "Deploy BACKEND")
+
+---
+
+---
+
+<summary style="color: green" > Deploy Fronted </summary>
+
+---
+
+[ **Deploy Vercel** Vased LMS ]( https://vased-web.vercel.app "Deploy FRONTED")
 
 ---
 ___
