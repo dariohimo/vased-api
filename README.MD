@@ -146,11 +146,6 @@ Entregables
 
 ---
 
-<p align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=git,vim,linux,nodejs,express,postgresql,python,bash,js,github,heroku,html,md,vscode,figma&theme=light" />
-  </a>
-</p>
 
 ___
 ---
@@ -242,7 +237,50 @@ ___
 ---
 ---
 
+**Documents insomia api**
+
+---
+
+# [Link Insomia api pdf](docs/pdf/insomia_pdf.pdf)
+
+---
+
+# [Link Insomia yaml](docs/insomia/Insomnia_api_2022-06-02.yaml )
+
+---
+
+# [Link Insomia json](docs/insomia/Insomnia_api_2022-06-02.json )
+
+---
+---
+
+**Document schema bd progresql**
+
+---
+
+# [Link schema bd vased](https://schemavaseddb.dariohimo.repl.co/)
+
+---
+
+# [Link diagram bd vased](https://drawsql.app/freedom-developers/diagrams/vased-db)
+
+---
+---
+
+**Structure directory project**
+
+---
+
+![directory NodeJs](docs/directory.png )
+
+
+
+---
+---
+
 **NodeJs:**
+
+<hr>
 
 ```nodejs
     Technologies nodejs:
@@ -258,13 +296,17 @@ ___
     "sequelize": "^6.19.0"
 
  ```   
-
-
-
-
-
 ---
 ---
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=git,vim,linux,nodejs,express,postgresql,python,bash,js,github,heroku,html,md,vscode,figma&theme=light" />
+  </a>
+</p>
+
+<hr>
+<hr>
 
 <summary style="color:green" > links proyect LMS </summary>
 
@@ -272,11 +314,16 @@ ___
 
 <strong style="color:green"> Repository </strong>
 
-[GitHub LMVS VASED](https://github.com/dariohimo//vased-api "LMS VASED")
+[GitHub **LMS VASED** Backend ](https://github.com/dariohimo//vased-api "LMS VASED")
+
+---
+
+[GitHub **LMS VASED** Fronted ](https://github.com/Jhuset2003/VasedWeb "LMS VASED")
+
 ---
 
 ---
-<summary style="color:green" > Backend </summary>
+<summary style="color:green" > Deploy Backend </summary>
 
 ---
 
@@ -285,7 +332,7 @@ ___
 
 ---
 
-<summary style="color:green" > Fronted </summary>
+<summary style="color:green" > Deploy Fronted </summary>
 
 ---
 
