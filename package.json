@@ -1,7 +1,7 @@
 {
   "name": "vased-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "LMS creado por Educamas Corte IV para fundación VASED.",
   "main": "index.js",
   "type": "module",
   "scripts": {
