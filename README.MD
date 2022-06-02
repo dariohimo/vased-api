@@ -294,8 +294,30 @@ ___
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.19.0"
-
  ```   
+---
+
+**Clone repo:**
+
+---
+
+```git
+
+Clone repo
+
+git clone https://github.com/dariohimo//vased-api
+
+npm install
+npm run 
+
+install postgresql
+created name bd
+
+install DBeaver connect to bd
+
+
+```
+
 ---
 ---
 
@@ -308,11 +330,14 @@ ___
 <hr>
 <hr>
 
+
 ### <summary style="color: green" align="center" > links project <strong> LMS VASED </strong> </summary>
 
 ---
 
 <strong style="color: green"> Repository </strong>
+
+---
 
 [GitHub **LMS VASED Backend** ](https://github.com/dariohimo//vased-api " Repo Backend")
 
