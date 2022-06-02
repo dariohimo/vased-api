@@ -308,7 +308,7 @@ ___
 <hr>
 <hr>
 
-<summary style="color: green" > links proyect LMS </summary>
+<summary style="color: green" align="center" > links project <strong> LMS VASED </strong> </summary>
 
 ---
 
@@ -360,6 +360,6 @@ ___
 ___
 ---
 
-<strong> Cohorte No.4 Proyecto Final << Junio 3 de 2022 >> </strong>
+<p align="center"> Cohorte No.4 Proyecto Final << Junio 3 de 2022 >> </p>
 
 ---
