@@ -342,6 +342,13 @@ install DBeaver connect to bd
 ### <summary style="color: green" align="center" > links project <strong> LMS VASED </strong> </summary>
 
 ---
+<strong> Backlog</strong>
+
+---
+
+[Link Backlog **LMS VASED** ](https://trello.com/invite/b/8cHlr6ae/73702569ba5328facf44e6d7200db746/backlog  "Backlog Trello")
+
+---
 
 <strong style="color: green"> Repository </strong>
 
