@@ -242,7 +242,7 @@ ___
 ---
 ---
 
-**Code:**
+**NodeJs:**
 
 ```nodejs
     Technologies nodejs:
