@@ -132,18 +132,8 @@ export const forgotPassword = async (req, res) => {
         const url = `${process.env.FRONTEND_URL}/reset-password/${user.id}/${token}`;
 
         const response = await sendRecoveryPassword(user.email, url);
-        console.log(response)
 
-
-        res.json({
-            token,
-            user: {
-                id: user.id,
-                name: user.names,
-                email: user.email,
-                role: user.roleId,
-            },
-        });
+        res.json({ msg: "Email sent successfully." });
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
@@ -173,7 +163,7 @@ export const resetPassword = async (req, res) => {
 
                 await sendSuccessfullyReset(user.email);
 
-                res.json({msg: "Password updated successfully."});
+                res.json({ msg: "Password updated successfully." });
             }
         );
     } catch (err) {
@@ -181,7 +171,6 @@ export const resetPassword = async (req, res) => {
         res.status(500).send("Server Error");
     }
 };
-
 
 // activate a user account
 export const activateAccount = async (req, res) => {
@@ -191,7 +180,8 @@ export const activateAccount = async (req, res) => {
 
         const user = await User.findOne({ where: { id } });
         if (!user) return res.status(400).json({ msg: "User not found." });
-        if (user.isActive) return res.status(400).json({ msg: "User already active." });
+        if (user.isActive)
+            return res.status(400).json({ msg: "User already active." });
 
         jwt.verify(
             token,
@@ -206,11 +196,11 @@ export const activateAccount = async (req, res) => {
                 user.password = hashPassword;
                 await user.save();
 
-                res.json({msg: "Account activated successfully."});
+                res.json({ msg: "Account activated successfully." });
             }
         );
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
     }
-}
+};
