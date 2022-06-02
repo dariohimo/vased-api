@@ -241,15 +241,15 @@ ___
 
 ---
 
-# [Link Insomia api pdf](docs/pdf/insomia_pdf.pdf)
+[Link Insomia api pdf](docs/pdf/insomia_pdf.pdf "insomia pdf")
 
 ---
 
-# [Link Insomia yaml](docs/insomia/Insomnia_api_2022-06-02.yaml )
+[Link Insomia yaml](docs/insomia/Insomnia_api_2022-06-02.yaml "insomia yaml" )
 
 ---
 
-# [Link Insomia json](docs/insomia/Insomnia_api_2022-06-02.json )
+[Link Insomia json](docs/insomia/Insomnia_api_2022-06-02.json "insomia json")
 
 ---
 ---
@@ -258,11 +258,11 @@ ___
 
 ---
 
-# [Link schema bd vased](https://schemavaseddb.dariohimo.repl.co/)
+[Link schema bd vased](https://schemavaseddb.dariohimo.repl.co/ "bd vased schema")
 
 ---
 
-# [Link diagram bd vased](https://drawsql.app/freedom-developers/diagrams/vased-db)
+[Link diagram bd vased](https://drawsql.app/freedom-developers/diagrams/vased-db)
 
 ---
 ---
