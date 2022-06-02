@@ -396,8 +396,9 @@ ___
 ---
 
 <p align="center"> 
-<img src="docs/linea_estrella.gif" width="80%" height="25px" >
+<img src="docs/linea_estrella.gif" width="100px" height="30px" >
 </p>
+
 
 - 👩‍💻 **[Daniela Puerta Castrillón]( https://github.com/daniela8896)**
 - 👩‍💻 **[Sara Salas]( https://github.com/sarisp3260 )**
@@ -407,14 +408,13 @@ ___
 - 👨‍💻 **[Albert Quintanilla]( https://github.com/Jhuset2003)**
 - 👨‍💻 **[Enmanuel Pereira]( https://github.com/iElectro13)**
 - 👨‍💻 **[Dario Higuera Moreno]( https://github.com/dariohimo)**
-  
-<p align="center"> 
-<img src="docs/linea.gif" width="100%" height="1px" >
-</p>
-
 ___
 ---
 
 <p align="center"> Cohorte No.4 Proyecto Final << Junio 3 de 2022 >> </p>
+
+<p align="center"> 
+<img src="docs/linea.gif" width="100%" height="1px" >
+</p>
 
 ---
