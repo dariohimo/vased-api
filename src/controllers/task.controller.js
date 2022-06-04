@@ -54,6 +54,17 @@ export const getTaskClassrooms = async (req, res) => {
                     attributes: {
                         exclude: ["createdAt", "updatedAt"],
                     },
+                    include: [
+                        {
+
+                            model: User,
+                            as: "users",
+                            attributes: {
+                                exclude: ["password", "createdAt", "updatedAt"],
+                            },
+                        },
+                    ],
+
                 },
                 {
                     model: User,
@@ -64,13 +75,13 @@ export const getTaskClassrooms = async (req, res) => {
                 }
             ],
         });
-        
+
         if (user.user.role === 1) {
             res.json(task_classrooms);
         } else {
             const userTaskClassrooms = task_classrooms.filter((task_classroom) => {
-                return task_classroom.users.some(
-                    (userInClassroom) => userInClassroom.id === user.user.id
+                return task_classroom.classroom.users.some(
+                    (userInClassroom) => userInClassroom.id === user.id
                 );
             });
             res.json(userTaskClassrooms);

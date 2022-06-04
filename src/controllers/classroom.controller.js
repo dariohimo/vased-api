@@ -20,15 +20,6 @@ export const getClassrooms = async (req, res) => {
                     attributes: {
                         exclude: ["password", "createdAt", "updatedAt"],
                     },
-                    include: [
-                        {
-                            model: Task_Classroom,
-                            as: "task_classrooms",
-                            attributes: {
-                                exclude: ["createdAt", "updatedAt"],
-                            }
-                        }
-                    ],
                 },
                 {
                     model: Task,
@@ -64,7 +55,7 @@ export const getClassrooms = async (req, res) => {
                     (userInClassroom) => userInClassroom.id === user.user.id
                 ) || classroom.users.students.some(
                     (userInClassroom) => userInClassroom.id === user.user.id
-                );
+                ) ;
             });
             res.json(userClassrooms);
         }
