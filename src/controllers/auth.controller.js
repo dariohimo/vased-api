@@ -133,7 +133,7 @@ export const forgotPassword = async (req, res) => {
 
         const response = await sendRecoveryPassword(user.email, url);
 
-        res.json({ msg: "Email sent successfully." });
+        res.json({ msg: "Email sent successfully.", url });
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");

@@ -4,14 +4,24 @@ import { Task_Classroom } from "../models/task_classroomModel.js";
 import { User_Task_Classroom } from "../models/user_task_classroomModel.js";
 import { Answer } from "../models/answerModel.js";
 import { sendActivateAccount } from "../services/mails/activateAccount.js";
+import { Task } from "../models/taskModel.js";
 
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export const createUser = async (req, res) => {
     try {
-        const { names, lastNames, dni, email, birthDate, city, country, roleId, dniTypeId } =
-            req.body;
+        const {
+            names,
+            lastNames,
+            dni,
+            email,
+            birthDate,
+            city,
+            country,
+            roleId,
+            dniTypeId,
+        } = req.body;
 
         // generate random alphanumeric password
         const password = Math.random().toString(36).slice(-8);
@@ -42,16 +52,23 @@ export const createUser = async (req, res) => {
                 role: newUser.roleId,
             },
         };
-        const token = jwt.sign(payload, process.env.ACTIVATION_TOKEN_SECRET + hashPassword, {
-            expiresIn: "7d",
-        });
+        const token = jwt.sign(
+            payload,
+            process.env.ACTIVATION_TOKEN_SECRET + hashPassword,
+            {
+                expiresIn: "7d",
+            }
+        );
 
         const url = `${process.env.FRONTEND_URL}/activate-account/${newUser.id}/${token}`;
 
         // send email
         await sendActivateAccount(newUser.email, url);
 
-        res.json(newUser);
+        res.json({
+            newUser,
+            url,
+        });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
@@ -64,8 +81,12 @@ export const updateUser = async (req, res) => {
         const { id } = req.params;
         const { names, lastNames, dni, email, birthDate, city, country } =
             req.body;
-
+        console.log(req.body);
         const user = await User.findByPk(id);
+
+        if (!user) {
+            return res.status(404).json({ msg: "User not found" });
+        }
 
         user.names = names;
         user.lastNames = lastNames;
@@ -107,6 +128,9 @@ export const getUser = async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findByPk(id, {
+            attributes: {
+                exclude: ["password", "createdAt", "updatedAt"],
+            },
             include: [
                 {
                     model: Classroom,
@@ -116,39 +140,37 @@ export const getUser = async (req, res) => {
                     },
                 },
                 {
-                    model: Task_Classroom,
-                    as: "task_classrooms",
-                },
-            ],
-        });
-
-        // find all answers made by user through User_Task_Classroom
-        const user_task_classrooms = await User_Task_Classroom.findAll({
-            where: {
-                userId: id,
-            },
-            attributes: {
-                exclude: ["createdAt", "updatedAt"],
-            },
-            include: [
-                {
-                    model: Answer,
-                    as: "answer",
+                    model: User_Task_Classroom,
+                    as: "user_task_classrooms",
                     attributes: {
                         exclude: ["createdAt", "updatedAt"],
                     },
+                    include: [
+                        {
+                            model: Answer,
+                            as: "answer",
+                        },
+                        {
+                            model: Task_Classroom,
+                            as: "task_classroom",
+                            attributes: {
+                                exclude: ["createdAt", "updatedAt"],
+                            },
+                            include: [
+                                {
+                                    model: Task,
+                                    as: "task",
+                                    attributes: {
+                                        exclude: ["createdAt", "updatedAt"],
+                                    },
+                                },
+                            ],
+                        },
+                    ],
                 },
             ],
         });
-
-        const answers = user_task_classrooms.map((user_task_classroom) => {
-            return user_task_classroom.answer;
-        });
-        res.json({
-            ...user.dataValues,
-            user_task_classrooms,
-            answers,
-        });
+        res.json(user);
     } catch (error) {
         return res.status(500).json({
             message: error.message,
@@ -171,37 +193,38 @@ export const getUsers = async (req, res) => {
                     },
                 },
                 {
-                    model: Task_Classroom,
-                    as: "task_classrooms",
-                },
-            ],
-        });
-
-        // find all answers made by user through User_Task_Classroom
-        const user_task_classrooms = await User_Task_Classroom.findAll({
-            attributes: {
-                exclude: ["createdAt", "updatedAt"],
-            },
-            include: [
-                {
-                    model: Answer,
-                    as: "answer",
+                    model: User_Task_Classroom,
+                    as: "user_task_classrooms",
                     attributes: {
                         exclude: ["createdAt", "updatedAt"],
                     },
+                    include: [
+                        {
+                            model: Answer,
+                            as: "answer",
+                        },
+                        {
+                            model: Task_Classroom,
+                            as: "task_classroom",
+                            attributes: {
+                                exclude: ["createdAt", "updatedAt"],
+                            },
+                            include: [
+                                {
+                                    model: Task,
+                                    as: "task",
+                                    attributes: {
+                                        exclude: ["createdAt", "updatedAt"],
+                                    },
+                                },
+                            ],
+                        },
+                    ],
                 },
             ],
         });
 
-        const answers = user_task_classrooms.map((user_task_classroom) => {
-            return user_task_classroom.answer;
-        });
-        const data = {
-            users,
-            user_task_classrooms,
-            answers,
-        };
-        res.json(data.users);
+        res.json(users);
     } catch (error) {
         return res.status(500).json({
             message: error.message,
