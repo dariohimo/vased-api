@@ -5,12 +5,62 @@ import jwt from "jsonwebtoken";
 
 import { sendRecoveryPassword } from "../services/mails/recoveryPassword.js";
 import { sendSuccessfullyReset } from "../services/mails/successfullyReset.js";
+import { Classroom } from "../models/classroomModel.js";
+import { User_Task_Classroom } from "../models/user_task_classroomModel.js";
+import { Answer } from "../models/answerModel.js";
+import { Task_Classroom } from "../models/task_classroomModel.js";
+import { Task } from "../models/taskModel.js";
 
 //A route to login a user and return a JWT
 export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const user = await User.findOne({ where: { email } });
+        const user = await User.findOne({
+            where: {
+                email,
+            },
+            attributes: {
+                exclude: ["createdAt", "updatedAt"],
+            },
+            include: [
+                {
+                    model: Classroom,
+                    as: "classrooms",
+                    attributes: {
+                        exclude: ["createdAt", "updatedAt"],
+                    },
+                },
+                {
+                    model: User_Task_Classroom,
+                    as: "user_task_classrooms",
+                    attributes: {
+                        exclude: ["createdAt", "updatedAt"],
+                    },
+                    include: [
+                        {
+                            model: Answer,
+                            as: "answer",
+                        },
+                        {
+                            model: Task_Classroom,
+                            as: "task_classroom",
+                            attributes: {
+                                exclude: ["createdAt", "updatedAt"],
+                            },
+                            include: [
+                                {
+                                    model: Task,
+                                    as: "task",
+                                    attributes: {
+                                        exclude: ["createdAt", "updatedAt"],
+                                    },
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ]
+        });
         if (!user) return res.status(400).json({ msg: "User not found." });
 
         const validPass = await bcrypt.compare(password, user.password);
@@ -32,10 +82,10 @@ export const login = async (req, res) => {
         res.json({
             token,
             user: {
-                id: user.id,
+                ...user.dataValues,
                 name: user.names + " " + user.lastNames,
-                email: user.email,
                 role: user.roleId,
+                password: null,
             },
         });
     } catch (err) {
