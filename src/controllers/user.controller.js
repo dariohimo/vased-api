@@ -51,7 +51,10 @@ export const createUser = async (req, res) => {
         // send email
         await sendActivateAccount(newUser.email, url);
 
-        res.json(newUser);
+        res.json({
+            newUser,
+            url
+        });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
@@ -64,8 +67,12 @@ export const updateUser = async (req, res) => {
         const { id } = req.params;
         const { names, lastNames, dni, email, birthDate, city, country } =
             req.body;
-
+        console.log(req.body);
         const user = await User.findByPk(id);
+
+        if (!user) {
+            return res.status(404).json({ msg: "User not found" });
+        }
 
         user.names = names;
         user.lastNames = lastNames;
