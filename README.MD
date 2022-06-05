@@ -1,4 +1,7 @@
-___
+<p align="center"> 
+<img src="docs/linea.gif" width="100%" height="1px" >
+<img src="docs/linea.gif" width="100%" height="1px" >
+</p>
 
 <p align="center">
    <a> <img src="https://simplonline.co/_next/image?url=https%3A%2F%2Fsimplonline-v3-prod.s3.eu-west-3.amazonaws.com%2Fmedia%2Fimage%2Fwebp%2F2c1dbc52-f4e4-4de3-b5ec-694afa509e39.webp&w=1280&q=75" width="100" height="80" />
@@ -21,6 +24,11 @@ ___
   <img src="https://openclipart.org/download/275234/4_Row.svg" width=25 height=25" >
 </p>
 
+<p align="center"> 
+<img src="docs/linea.gif" width="100%" height="2px" >
+</p>
+
+
 ___
 
 <hr>
@@ -28,14 +36,21 @@ ___
 <details>
 <summary>  LMS VASED </summary>
 
-```
+
+<!--
+
 Andres Esteban Patino
 
 05.05.2022
 
-Bienvenido a tu proyecto final de desarrollo web full stack, te felicitamos por haber llegado hasta este punto de tu formación. Sabemos que tienes todas las capacidades para ser un profesional altamente exitoso y por eso te presentamos el último reto académico de Prográmate y Simplon, antes de salir al mundo laboral.   Pertenecerás a un equipo de desarrollo  en el cual deberás desempeñar un role como desarrollador y llegar a la terminación funcional de la aplicación que esté propuesta en el brief de proyecto detallado.  El cual deberá seguir los estándares propuestos detallados en el documento "Guía de competencias a evaluar" y que será desarrollado con el stack MERN. Este será tu proyecto master con el que lograrás corroborar todas las competencias necesarias para certificarte como desarrollador web Full Stack con Prográmate y Simplon.
-``` 
+
+-->
+
 ```
+Bienvenido a tu proyecto final de desarrollo web full stack, te felicitamos por haber llegado hasta este punto de tu formación. Sabemos que tienes todas las capacidades para ser un profesional altamente exitoso y por eso te presentamos el último reto académico de Prográmate y Simplon, antes de salir al mundo laboral.   Pertenecerás a un equipo de desarrollo  en el cual deberás desempeñar un role como desarrollador y llegar a la terminación funcional de la aplicación que esté propuesta en el brief de proyecto detallado.  El cual deberá seguir los estándares propuestos detallados en el documento "Guía de competencias a evaluar" y que será desarrollado con el stack MERN. Este será tu proyecto master con el que lograrás corroborar todas las competencias necesarias para certificarte como desarrollador web Full Stack con Prográmate y Simplon.
+
+
+
 Marcos de competencias
 Desarrollador web y web móvil
 
@@ -43,8 +58,7 @@ Recurso(s)
 https://fundacionvased.org/
 landing
 
-```
-```
+
 Contexto del proyecto
 
 La fundación VASED tiene la necesidad de migrar su plataforma hecha en moddle a un desarrollo a medida, por lo que precisa un equipo de desarrollo para poner los cimientos de la nueva plataforma fijando un mínimo producto viable con un mes de plazo.
@@ -146,15 +160,144 @@ Entregables
 
 ---
 
-<p align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=git,vim,linux,nodejs,express,postgresql,python,bash,js,github,heroku,html,md,vscode,figma&theme=light" />
-  </a>
-</p>
+
 
 ___
 ---
- 
+
+ **LMS API:**
+
+---
+---
+
+<table BORDER=5 >
+
+  <tr  >
+    <th COLSPAN=8 >Auth</th>     
+  </tr>
+  <tr style="background-color:purple">
+  <td></td>
+    <td><img src="./docs/api/auth/login.png" width=100 height=100 alt="Login" >  </td>
+    <td><img src="./docs/api/auth/register.png" width=100 height=100 alt="Register" ></td>
+    <td><img src="./docs/api/auth/ActivateAccount.png" width=100 height=100" alt="Activate_Account" >  </td>
+    <td><img src="./docs/api/auth/ForgotPassword.png " width=100 height=100" alt="Forgot_Password" >  </td>
+     <td><img src="./docs/api/auth/ResetPassword.png " width=100 height=100" alt="Reset_Password" >  </td>
+     <td></td><td></td>
+  </tr>
+   
+   <tr aling="center">
+     
+   <th COLSPAN=8 > User </th>
+   
+  </tr>
+  <tr style="background-color:purple">
+   <td></td>
+    <td><img src="./docs/api/user/create-user.png" width=100 height=100" >  </td>
+    <td><img src="./docs/api/user/delete-user.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/user/getUsers.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/user/getUser.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/user/update-user.png" width=100 height=100 ></td>
+     <td></td><td></td>
+  </tr>
+  
+  
+
+ <tr>
+     
+   <th COLSPAN=8> Classroms </th>
+   
+  </tr>
+  <tr style="background-color:purple">
+    <td><img src="./docs/api/classroom/add-task.png" width=100 height=100 >  </td>
+    <td><img src="./docs/api/classroom/add-user.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/classroom/create.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/classroom/delete-task.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/classroom/delete-user.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/classroom/delete.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/classroom/getClassroom.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/classroom/update.png" width=100 height=100 ></td>
+  </tr> 
+
+  <th COLSPAN=8> Task </th>
+   
+  </tr>
+  <tr style="background-color:purple">
+    <td></td>
+    <td><img src="./docs/api/task/create-task.png" width=100 height=100 >  </td>
+    <td><img src="./docs/api/task/delete-task-clasroom.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/task/delete-task.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/task/getTask-classroom.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/task/getTasks.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/task/update.png" width=100 height=100 ></td>
+    <td><img src="./docs/api/task/user-task-classroom.png" width=100 height=100 ></td>
+   
+  </tr>   
+
+   <th COLSPAN=8> Utils </th>
+   
+  </tr>
+  <tr style="background-color:purple">
+    <td></td><td></td>
+    <td></td>
+    <td><img src="./docs/api/utils/create-dnitype.png" width=100 height=100 >  </td>
+    <td><img src="./docs/api/utils/create-role.png" width=100 height=100 ></td>
+    <td></td>
+    <td></td> <td></td>
+   
+  </tr>   
+
+
+ </table>
+
+---
+---
+
+**Documents insomia api**
+
+---
+
+[Link Insomia api pdf](docs/pdf/insomia_pdf.pdf "insomia pdf")
+
+---
+
+[Link Insomia yaml](docs/insomia/Insomnia_api_2022-06-02.yaml "insomia yaml" )
+
+---
+
+[Link Insomia json](docs/insomia/Insomnia_api_2022-06-02.json "insomia json")
+
+---
+---
+
+**Document schema bd progresql**
+
+---
+
+[Link schema bd vased](https://schemavaseddb.dariohimo.repl.co/ "bd vased schema")
+
+---
+
+[Link diagram bd vased](https://drawsql.app/freedom-developers/diagrams/vased-db)
+
+---
+---
+
+**Structure directory project**
+
+---
+
+![directory NodeJs](docs/directory.png )
+
+
+
+---
+---
+
+**NodeJs:**
+
+<hr>
+
+
 ```nodejs
     Technologies nodejs:
 
@@ -170,69 +313,112 @@ ___
 
  ```   
 ---
----
 
-**Code:**
-
----
-
-<table >
-
-  <tr style="background-color:orange">
-    <td style="color:blue">Auth</td>
-     
-  </tr>
-  <tr style="background-color:purple">
-    <td><img src="https://openclipart.org/image/2400px/svg_to_png/28580/kablam-Number-Animals-1.png" width=100 height=100></td>
-    <td><img src="https://openclipart.org/image/2400px/svg_to_png/28580/kablam-Number-Animals-1.png" width=100 height=100></td>
-    <td><img src="https://openclipart.org/download/275234/4_Row.svg" width=100 height=100" width=270 height=480>  </td>
-  </tr>
-   
-   <tr style="background-color:orange">
-   <td style="color:blue"> User </td>
-   
-  </tr>
-  <tr style="background-color:purple">
-    <td><img src="https://openclipart.org/image/2400px/svg_to_png/28580/kablam-Number-Animals-1.png" width=100 height=100></td>
-    <td><img src="https://openclipart.org/image/2400px/svg_to_png/28580/kablam-Number-Animals-1.png" width=100 height=100></td>
-    <td><img src="https://openclipart.org/download/275234/4_Row.svg" width=100 height=100" width=270 height=480></td>
-  </tr>
- </table>
-
----
----
-<summary style="color:green" > links proyect </summary>
+**Clone repo:**
 
 ---
 
-<strong style="color:green"> Repository </strong>
+```git
 
-[GitHub LMVS VASED](https://github.com/dariohimo//vased-api "LMS VASED")
+Clone repo
+
+git clone https://github.com/dariohimo//vased-api
+
+npm install
+npm run 
+
+install postgresql
+created name bd
+
+install DBeaver connect to bd
+
+
+```
+
+---
+---
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=git,vim,linux,nodejs,express,postgresql,python,bash,js,github,heroku,html,md,vscode,figma&theme=light" />
+  </a>
+</p>
+
+<hr>
+<hr>
+
+
+### <summary style="color: green" align="center" > links project <strong> LMS VASED </strong> </summary>
+
+---
+<strong> Backlog</strong>
+
+---
+
+[Link Backlog **LMS VASED** ](https://trello.com/invite/b/8cHlr6ae/73702569ba5328facf44e6d7200db746/backlog  "Backlog Trello")
+
+---
+
+<strong style="color: green"> Repository </strong>
+
+---
+
+[GitHub **LMS VASED Backend** ](https://github.com/dariohimo//vased-api " Repo Backend")
+
+---
+
+[GitHub **LMS VASED Fronted** ](https://github.com/Jhuset2003/VasedWeb " Repo Fronted")
+
 ---
 
 ---
-<summary style="color:green" > Backend </summary>
+
+<summary style="color: green" > Deploy Backend </summary>
 
 ---
 
-[Heroku Vased LMS](https://vased-api.herokuapp.com/api/v1/ "BACKEND")
----
+[ **Deploy Heroku** LMS Vased](https://vased-api.herokuapp.com/api/v1/ "Deploy BACKEND")
 
 ---
 
-<summary style="color:green" > Fronted </summary>
+---
+
+<summary style="color: green" > Deploy Fronted </summary>
 
 ---
 
-[Vercel Vased LMS]( https://vased-web.vercel.app "FRONTED")
+[ **Deploy Vercel** Vased LMS ]( https://vased-web.vercel.app "Deploy FRONTED")
+
 ---
+___
+
+***
+<p align="center"> 
+<img src="docs/linea.gif" width="100%" height="1px >
+</p>
+
+### <p align="center">  Coder Project Educamas </p>
+
+<p align="center"> 
+<img src="docs/linea.gif" width="100%" height="1px" >
+</p>
 
 ___
-***
+
+
+
 
 **github** :octocat:
 ___
 ---
+
+
+<p align="center"> 
+<img src="docs/linea_estrella.gif" width="100px" height="30px" >
+</p>
+
+
+
 - 👩‍💻 **[Daniela Puerta Castrillón]( https://github.com/daniela8896)**
 - 👩‍💻 **[Sara Salas]( https://github.com/sarisp3260 )**
 - 👩‍💻 **[Christian Javier Ruiz]( https://github.com/Lord-Mugen )**
@@ -244,7 +430,12 @@ ___
 ___
 ---
 
-<strong> Cohorte No.4 Proyecto Final << Junio 3 de 2022 >> </strong>
-<summary style="color:orange" > Cohorte No.4 Proyecto Final << Junio 3 de 2022 >> </summary>
+
+<p align="center"> Cohorte No.4 Proyecto Final << Junio 3 de 2022 >> </p>
+
+<p align="center"> 
+<img src="docs/linea.gif" width="100%" height="1px" >
+</p>
+
 
 ---
