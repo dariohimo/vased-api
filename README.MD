@@ -23,9 +23,11 @@ ___
   </a> <strong>COHORTE </strong>
   <img src="https://openclipart.org/download/275234/4_Row.svg" width=25 height=25" >
 </p>
+
 <p align="center"> 
 <img src="docs/linea.gif" width="100%" height="2px" >
 </p>
+
 
 ___
 
@@ -34,15 +36,19 @@ ___
 <details>
 <summary>  LMS VASED </summary>
 
+
 <!--
+
 Andres Esteban Patino
 
 05.05.2022
+
 
 -->
 
 ```
 Bienvenido a tu proyecto final de desarrollo web full stack, te felicitamos por haber llegado hasta este punto de tu formación. Sabemos que tienes todas las capacidades para ser un profesional altamente exitoso y por eso te presentamos el último reto académico de Prográmate y Simplon, antes de salir al mundo laboral.   Pertenecerás a un equipo de desarrollo  en el cual deberás desempeñar un role como desarrollador y llegar a la terminación funcional de la aplicación que esté propuesta en el brief de proyecto detallado.  El cual deberá seguir los estándares propuestos detallados en el documento "Guía de competencias a evaluar" y que será desarrollado con el stack MERN. Este será tu proyecto master con el que lograrás corroborar todas las competencias necesarias para certificarte como desarrollador web Full Stack con Prográmate y Simplon.
+
 
 
 Marcos de competencias
@@ -153,6 +159,7 @@ Entregables
 <hr>
 
 ---
+
 
 
 ___
@@ -290,6 +297,7 @@ ___
 
 <hr>
 
+
 ```nodejs
     Technologies nodejs:
 
@@ -302,6 +310,7 @@ ___
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.19.0"
+
  ```   
 ---
 
@@ -398,13 +407,16 @@ ___
 
 
 
+
 **github** :octocat:
 ___
 ---
 
+
 <p align="center"> 
 <img src="docs/linea_estrella.gif" width="100px" height="30px" >
 </p>
+
 
 
 - 👩‍💻 **[Daniela Puerta Castrillón]( https://github.com/daniela8896)**
@@ -418,10 +430,12 @@ ___
 ___
 ---
 
+
 <p align="center"> Cohorte No.4 Proyecto Final << Junio 3 de 2022 >> </p>
 
 <p align="center"> 
 <img src="docs/linea.gif" width="100%" height="1px" >
 </p>
+
 
 ---

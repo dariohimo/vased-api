@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createTask, updateTask, deleteTask, getTasks, getTaskClassrooms, addTaskClassroomToUser, deleteUserTaskClassroom } from "../controllers/task.controller.js";
+import { createTask, updateTask, deleteTask, getTasks, getTaskClassrooms, addTaskClassroomToUser, deleteUserTaskClassroom, getAnswer } from "../controllers/task.controller.js";
 import { auth } from "../middlewares/auth.js";
 import { authTeacher } from "../middlewares/authTeacher.js";
 
@@ -29,5 +29,8 @@ router.post('/add-user-task-classroom', authTeacher, addTaskClassroomToUser)
 
 // delete a user task classroom
 router.delete('/delete-user-task-classroom', authTeacher, deleteUserTaskClassroom)
+
+// get answer
+router.get('/answer/:userTaskClassroomId', auth, getAnswer)
 
 export default router

@@ -4,6 +4,7 @@ import { Classroom } from "../models/classroomModel.js";
 import { Task_Classroom } from "../models/task_classroomModel.js";
 import { User_Task_Classroom } from "../models/user_task_classroomModel.js";
 import { User_Classroom } from "../models/user_classroomModel.js";
+import { Answer } from "../models/answerModel.js";
 
 export const getTasks = async (req, res) => {
     try {
@@ -201,6 +202,30 @@ export const deleteUserTaskClassroom = async (req, res) => {
         });
         await user_task_classroom.destroy();
         res.sendStatus(204);
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
+    }
+}
+
+
+export const getAnswer = async (req, res) => {
+    try {
+        const { userTaskClassroomId } = req.params;
+        const answer = await Answer.findOne({
+            where: {
+                userTaskClassroomId: Number(userTaskClassroomId),
+            }
+        })
+
+        if(!answer) {
+            return res.status(400).json({
+                message: "No answer found"
+            })
+        }
+
+        res.json(answer);
     } catch (error) {
         return res.status(500).json({
             message: error.message,
