@@ -213,7 +213,7 @@ export const deleteUserTaskClassroom = async (req, res) => {
 export const getAnswer = async (req, res) => {
     try {
         const { userTaskClassroomId } = req.params;
-        const answer = await Answer.findAll({
+        const answer = await Answer.findOne({
             where: {
                 userTaskClassroomId: Number(userTaskClassroomId),
             }
@@ -221,7 +221,7 @@ export const getAnswer = async (req, res) => {
 
         if(!answer) {
             return res.status(400).json({
-                message: "No answers found"
+                message: "No answer found"
             })
         }
 
