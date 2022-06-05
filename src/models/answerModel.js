@@ -21,10 +21,3 @@ export const Answer = sequelize.define("answer", {
 
 User_Task_Classroom.hasOne(Answer);
 Answer.belongsTo(User_Task_Classroom);
-
-Answer.hasOne(User_Task_Classroom, {
-    foreignKey: "answer_id",
-})
-User_Task_Classroom.belongsTo(Answer, {
-    foreignKey: "answer_id",
-})

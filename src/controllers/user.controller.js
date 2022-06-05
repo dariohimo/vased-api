@@ -149,10 +149,6 @@ export const getUser = async (req, res) => {
                         {
                             model: Answer,
                             as: "answer",
-                            required: true,
-                            attributes: {
-                                exclude: ["createdAt", "updatedAt"],
-                            }
                         },
                         {
                             model: Task_Classroom,

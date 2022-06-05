@@ -4,7 +4,6 @@ import { Task_Classroom } from "./task_classroomModel.js";
 import { User } from "./userModel.js";
 import { Task } from "./taskModel.js";
 import { Classroom } from "./classroomModel.js";
-import { Answer } from "./answerModel.js";
 
 export const User_Task_Classroom = sequelize.define("user_task_classroom", {
     id: {
@@ -31,12 +30,6 @@ User_Task_Classroom.belongsTo(User, {
     foreignKey: "userId",
 });
 
+
 Task_Classroom.hasMany(User_Task_Classroom)
 User_Task_Classroom.belongsTo(Task_Classroom)
-
-Answer.hasOne(User_Task_Classroom, {
-    foreignKey: "answerId",
-})
-User_Task_Classroom.belongsTo(Answer, {
-    foreignKey: "answerId",
-})
