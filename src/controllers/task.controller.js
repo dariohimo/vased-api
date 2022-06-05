@@ -212,7 +212,7 @@ export const deleteUserTaskClassroom = async (req, res) => {
 
 export const getAnswer = async (req, res) => {
     try {
-        const { userTaskClassroomId } = req.query;
+        const { userTaskClassroomId } = req.params;
         const answer = await Answer.findAll({
             where: {
                 userTaskClassroomId: Number(userTaskClassroomId),
