@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { login, register, forgotPassword, resetPassword, activateAccount } from "../controllers/auth.controller.js";
-import { authAdmin } from "../middlewares/authAdmin.js";
 
 const router = Router();
 
