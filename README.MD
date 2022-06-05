@@ -27,6 +27,11 @@ ___
 <img src="docs/linea.gif" width="100%" height="2px" >
 </p>
 
+<p align="center"> 
+<img src="docs/linea.gif" width="100%" height="2px" >
+</p>
+
+
 ___
 
 <hr>
@@ -34,10 +39,11 @@ ___
 <details>
 <summary>  LMS VASED </summary>
 
-<!--
+
 Andres Esteban Patino
 
 05.05.2022
+
 
 -->
 
@@ -153,6 +159,7 @@ Entregables
 <hr>
 
 ---
+
 
 
 ___
@@ -290,6 +297,7 @@ ___
 
 <hr>
 
+
 ```nodejs
     Technologies nodejs:
 
@@ -311,6 +319,7 @@ ___
 
 ```git
 
+
 Clone repo
 
 git clone https://github.com/dariohimo//vased-api
@@ -326,6 +335,24 @@ install DBeaver connect to bd
 
 ```
 
+
+
+Clone repo
+
+git clone https://github.com/dariohimo//vased-api
+
+npm install
+npm run 
+
+install postgresql
+created name bd
+
+install DBeaver connect to bd
+
+
+```
+
+---
 ---
 ---
 
@@ -398,13 +425,16 @@ ___
 
 
 
+
 **github** :octocat:
 ___
 ---
 
+
 <p align="center"> 
 <img src="docs/linea_estrella.gif" width="100px" height="30px" >
 </p>
+
 
 
 - 👩‍💻 **[Daniela Puerta Castrillón]( https://github.com/daniela8896)**
@@ -423,5 +453,6 @@ ___
 <p align="center"> 
 <img src="docs/linea.gif" width="100%" height="1px" >
 </p>
+
 
 ---
