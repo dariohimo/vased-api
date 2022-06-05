@@ -13,3 +13,10 @@ export const User_Classroom = sequelize.define("user_classroom", {
 
 User.belongsToMany(Classroom, {through: "user_classroom"});
 Classroom.belongsToMany(User, {through: "user_classroom"});
+
+User.hasMany(User_Classroom, {
+    foreignKey: "userId",
+})
+User_Classroom.belongsTo(User, {
+    foreignKey: "userId",
+})

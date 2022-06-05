@@ -40,6 +40,7 @@ export const getClassrooms = async (req, res) => {
             );
             return {
                 ...classroom.dataValues,
+                totalStudents: students.length,
                 users: {
                     teachers,
                     students,
@@ -142,6 +143,28 @@ export const addUserToClassroom = async (req, res) => {
         const { userId, classroomId } = req.query;
         const user = await User.findByPk(Number(userId));
         const classroom = await Classroom.findByPk(Number(classroomId));
+
+        // count the number of users with roleId = 3 in the classroom
+        const userInClassroomCount = await User_Classroom.count({
+            where: {
+                classroomId: classroom.id,
+                "$user.roleId$": 3,
+            },
+            include: [
+                {
+                    model: User,
+                    as: "user",
+                }
+            ]
+        })
+
+        if(userInClassroomCount >= classroom.capacity) {
+            return res.status(400).json({
+                message: "The classroom is full"
+            })
+        }
+
+        console.log(userInClassroomCount);
 
         if (!user) {
             return res.status(404).json({ message: "User not found" });
