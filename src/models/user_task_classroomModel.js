@@ -30,12 +30,6 @@ User_Task_Classroom.belongsTo(User, {
     foreignKey: "userId",
 });
 
-Task.hasMany(User_Task_Classroom, {
-    foreignKey: "taskId",
-})
-User_Task_Classroom.belongsTo(Task, {
-    foreignKey: "taskId",
-})
 
 Task_Classroom.hasMany(User_Task_Classroom)
 User_Task_Classroom.belongsTo(Task_Classroom)
