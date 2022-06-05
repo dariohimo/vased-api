@@ -164,6 +164,13 @@ export const getUser = async (req, res) => {
                                         exclude: ["createdAt", "updatedAt"],
                                     },
                                 },
+                                {
+                                    model: Classroom,
+                                    as: "classroom",
+                                    attributes: {
+                                        exclude: ["createdAt", "updatedAt"],
+                                    }
+                                }
                             ],
                         },
                     ],
