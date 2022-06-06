@@ -228,7 +228,8 @@ export const addTaskToClassroom = async (req, res) => {
             classroomId,
         });
 
-        res.sendStatus(204);
+
+        res.json(task_classroom);
     } catch (error) {
         return res.status(500).json({
             message: error.message,
