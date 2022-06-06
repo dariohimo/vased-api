@@ -16,15 +16,10 @@ export const getTasks = async (req, res) => {
             },
         });
 
-        if (user.user.role === 1) {
+        if (user.user.role === 1 || user.user.role === 2) {
             res.json(tasks);
         } else {
-            const userTasks = tasks.filter((task) => {
-                return task.users.some(
-                    (taskInClassroom) => taskInClassroom.id === user.id
-                );
-            });
-            res.json(userTasks);
+            res.json([]);
         }
     } catch (error) {
         return res.status(500).json({
@@ -226,6 +221,42 @@ export const getAnswer = async (req, res) => {
         }
 
         res.json(answer);
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
+    }
+}
+
+export const getUserTaskClassrooms = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const userTaskClassrooms = await User_Task_Classroom.findAll({
+            where: {
+                userId: Number(userId),
+            },
+            include: [
+                {
+                    model: Task_Classroom,
+                    as: "task_classroom",
+                    attributes: {
+                        exclude: ["createdAt", "updatedAt"],
+                    },
+                    include: [
+                        {
+                            model: Task,
+                            as: "task",
+                            attributes: {
+                                exclude: ["createdAt", "updatedAt"],
+                            }
+                        }
+                    ]
+                }
+            ]
+        });
+
+
+        res.json(userTaskClassrooms);
     } catch (error) {
         return res.status(500).json({
             message: error.message,

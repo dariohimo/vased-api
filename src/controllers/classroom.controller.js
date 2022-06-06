@@ -3,6 +3,7 @@ import { User } from "../models/userModel.js";
 import { User_Classroom } from "../models/user_classroomModel.js";
 import { Task_Classroom } from "../models/task_classroomModel.js";
 import { Task } from "../models/taskModel.js";
+import { User_Task_Classroom } from "../models/user_task_classroomModel.js";
 
 // controller that returns all the classrooms with the users that are enrolled in them. If the user is an admin, it returns all the classrooms, otherwise it returns only the classrooms that the user is enrolled in.
 export const getClassrooms = async (req, res) => {
@@ -30,7 +31,9 @@ export const getClassrooms = async (req, res) => {
                 }
             ],
         });
-        //console.log(classrooms);
+        
+
+
         const processedClassrooms = classrooms.map((classroom) => {
             const teachers = classroom.users.filter(
                 (user) => user.roleId === 2
@@ -38,8 +41,11 @@ export const getClassrooms = async (req, res) => {
             const students = classroom.users.filter(
                 (user) => user.roleId === 3
             );
+
+
             return {
                 ...classroom.dataValues,
+                totalStudents: students.length,
                 users: {
                     teachers,
                     students,
@@ -143,6 +149,28 @@ export const addUserToClassroom = async (req, res) => {
         const user = await User.findByPk(Number(userId));
         const classroom = await Classroom.findByPk(Number(classroomId));
 
+        // count the number of users with roleId = 3 in the classroom
+        const userInClassroomCount = await User_Classroom.count({
+            where: {
+                classroomId: classroom.id,
+                "$user.roleId$": 3,
+            },
+            include: [
+                {
+                    model: User,
+                    as: "user",
+                }
+            ]
+        })
+
+        if(userInClassroomCount >= classroom.capacity) {
+            return res.status(400).json({
+                message: "The classroom is full"
+            })
+        }
+
+        console.log(userInClassroomCount);
+
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
@@ -200,7 +228,8 @@ export const addTaskToClassroom = async (req, res) => {
             classroomId,
         });
 
-        res.sendStatus(204);
+
+        res.json(task_classroom);
     } catch (error) {
         return res.status(500).json({
             message: error.message,
