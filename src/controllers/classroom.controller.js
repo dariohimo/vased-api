@@ -3,6 +3,7 @@ import { User } from "../models/userModel.js";
 import { User_Classroom } from "../models/user_classroomModel.js";
 import { Task_Classroom } from "../models/task_classroomModel.js";
 import { Task } from "../models/taskModel.js";
+import { User_Task_Classroom } from "../models/user_task_classroomModel.js";
 
 // controller that returns all the classrooms with the users that are enrolled in them. If the user is an admin, it returns all the classrooms, otherwise it returns only the classrooms that the user is enrolled in.
 export const getClassrooms = async (req, res) => {
@@ -30,7 +31,9 @@ export const getClassrooms = async (req, res) => {
                 }
             ],
         });
-        //console.log(classrooms);
+        
+
+
         const processedClassrooms = classrooms.map((classroom) => {
             const teachers = classroom.users.filter(
                 (user) => user.roleId === 2
@@ -38,6 +41,8 @@ export const getClassrooms = async (req, res) => {
             const students = classroom.users.filter(
                 (user) => user.roleId === 3
             );
+
+
             return {
                 ...classroom.dataValues,
                 totalStudents: students.length,
