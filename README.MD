@@ -337,20 +337,7 @@ install DBeaver connect to bd
 
 
 
-Clone repo
 
-git clone https://github.com/dariohimo//vased-api
-
-npm install
-npm run 
-
-install postgresql
-created name bd
-
-install DBeaver connect to bd
-
-
-```
 
 ---
 ---
