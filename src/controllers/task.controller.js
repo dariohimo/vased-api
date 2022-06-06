@@ -238,7 +238,7 @@ export const getUserTaskClassrooms = async (req, res) => {
             include: [
                 {
                     model: Task_Classroom,
-                    as: "taskClassroom",
+                    as: "task_classroom",
                     attributes: {
                         exclude: ["createdAt", "updatedAt"],
                     },
