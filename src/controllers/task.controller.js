@@ -19,12 +19,7 @@ export const getTasks = async (req, res) => {
         if (user.user.role === 1) {
             res.json(tasks);
         } else {
-            const userTasks = tasks.filter((task) => {
-                return task.users.some(
-                    (taskInClassroom) => taskInClassroom.id === user.id
-                );
-            });
-            res.json(userTasks);
+            res.json([]);
         }
     } catch (error) {
         return res.status(500).json({
