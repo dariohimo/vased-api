@@ -11,7 +11,7 @@ import { authTeacher } from "../middlewares/authTeacher.js";
 
 const router = Router();
 
-router.get("/", auth, getAnswersByUser);
+router.get("/:userId", auth, getAnswersByUser);
 router.post("/create-answer", auth, createAnswer);
 router.post("/add-feedback", authTeacher, addFeedback);
 

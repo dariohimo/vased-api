@@ -10,7 +10,7 @@ import { User_Classroom } from "../models/user_classroomModel.js";
 // controller for create a new answer
 export const createAnswer = async (req, res) => {
     try {
-        const { answer, user, userTaskClassroomId } = req.body;
+        const { answer,  userTaskClassroomId } = req.body;
         const newAnswer = await Answer.create({
             answer_text: answer,
             userTaskClassroomId
@@ -59,9 +59,10 @@ export const addFeedback = async (req, res) => {
 export const getAnswersByUser = async (req, res) => {
     try {
         const { user } = req.body;
+        const { userId } = req.params;
         const answers = await Answer.findAll({
             where: {
-                "$user_task_classroom.user.id$": user.user.id,
+                "$user_task_classroom.userId$": userId,
             },
             attributes: {
                 exclude: ["createdAt", "updatedAt"],
