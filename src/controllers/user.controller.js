@@ -238,3 +238,33 @@ export const getUsers = async (req, res) => {
         });
     }
 };
+
+// controller that retusn all User_Task_Classroom by taskCLassroomId
+export const getUserTaskClassroom = async (req, res) => {
+    try {
+        const { taskClassroomId } = req.params;
+        const user_task_classrooms = await User_Task_Classroom.findAll({
+            where: {
+                taskClassroomId,
+            },
+            include: [
+                {
+                    model: User,
+                    as: "user",
+                    attributes: {
+                        exclude: ["password", "createdAt", "updatedAt"],
+                    }
+                }
+            ],
+        });
+
+        const users = user_task_classrooms.map((user_task_classroom) => {
+            return user_task_classroom.user;
+        })
+        res.json(users);
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
+    }
+}
