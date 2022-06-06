@@ -16,7 +16,7 @@ export const getTasks = async (req, res) => {
             },
         });
 
-        if (user.user.role === 1) {
+        if (user.user.role === 1 || user.user.role === 2) {
             res.json(tasks);
         } else {
             res.json([]);
