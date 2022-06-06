@@ -78,12 +78,97 @@ export const getAnswersByUser = async (req, res) => {
                         {
                             model: User,
                             as: "user",
+                        },
+                        {
+                            model: Task_Classroom,
+                            as: "task_classroom",
+                            attributes: {
+                                exclude: ["createdAt", "updatedAt"],
+                            },
+                            include: [
+                                {
+                                    model: Task,
+                                    as: "task",
+                                    attributes: {
+                                        exclude: ["createdAt", "updatedAt"],
+                                    }
+                                }
+                            ]
                         }
                     ]
                 },
             ],
         });
         res.json(answers);
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
+    }
+}
+
+
+export const getAnswersByUserAndClassroom = async (req, res) => {
+    try {
+        const { user } = req.body;
+        const { userId, classroomId } = req.params;
+
+        const answers = await Answer.findAll({
+            where: {
+                "$user_task_classroom.userId$": userId,
+            },
+            attributes: {
+                exclude: ["createdAt", "updatedAt"],
+            },
+            include: [
+                {
+                    model: User_Task_Classroom,
+                    as: "user_task_classroom",
+                    attributes: {
+                        exclude: ["password", "createdAt", "updatedAt"],
+                    },
+                    include: [
+                        {
+                            model: User,
+                            as: "user",
+                        },
+                        {
+                            model: Task_Classroom,
+                            as: "task_classroom",
+                            attributes: {
+                                exclude: ["createdAt", "updatedAt"],
+                            },
+                            include: [
+                                {
+                                    model: Task,
+                                    as: "task",
+                                    attributes: {
+                                        exclude: ["createdAt", "updatedAt"],
+                                    }
+                                },
+                                {
+                                    model: Classroom,
+                                    as: "classroom",
+                                    attributes: {
+                                        exclude: ["createdAt", "updatedAt"],
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+            ],
+        });
+
+        // exclude answers from other classrooms
+        const answersFiltered = answers.filter(answer => {
+            return answer.user_task_classroom.task_classroom.classroom.id == classroomId;
+        })
+
+        res.json({
+            answers: answersFiltered,
+            totalAnswers: answersFiltered.length
+        });
     } catch (error) {
         return res.status(500).json({
             message: error.message,
