@@ -227,3 +227,39 @@ export const getAnswer = async (req, res) => {
         });
     }
 }
+
+export const getUserTaskClassrooms = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const userTaskClassrooms = await User_Task_Classroom.findAll({
+            where: {
+                userId: Number(userId),
+            },
+            include: [
+                {
+                    model: Task_Classroom,
+                    as: "taskClassroom",
+                    attributes: {
+                        exclude: ["createdAt", "updatedAt"],
+                    },
+                    include: [
+                        {
+                            model: Task,
+                            as: "task",
+                            attributes: {
+                                exclude: ["createdAt", "updatedAt"],
+                            }
+                        }
+                    ]
+                }
+            ]
+        });
+
+
+        res.json(userTaskClassrooms);
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
+    }
+}
