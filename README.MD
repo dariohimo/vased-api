@@ -332,12 +332,11 @@ created name bd
 
 install DBeaver connect to bd
 
+Generador estructura html de la bd en postgressql en **schemaspy-6.1.0**
+
+sudo java -jar schemaspy-6.1.0.jar -vizjs -t pgsql -s public -db vaseddb -u vasedAdmin -p fundacion -host localhost -o /var/www/html/schemaSpy/ -dp postgresql-42.3.5.jar
 
 ```
-
-
-
-
 
 ---
 ---
@@ -355,7 +354,18 @@ install DBeaver connect to bd
 
 ### <summary style="color: green" align="center" > links project <strong> LMS VASED </strong> </summary>
 
+
 ---
+
+<strong> Mockup</strong>
+
+---
+
+[Link Mockup **LMS VASED** ]( https://www.figma.com/file/4PrKIOMJgIZzl2d1CH0joY/Untitled?node-id=0%3A1 "Mockup Figma")
+
+
+---
+
 <strong> Backlog</strong>
 
 ---
