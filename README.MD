@@ -39,11 +39,11 @@ ___
 <details>
 <summary>  LMS VASED </summary>
 
+<!--
 
 Andres Esteban Patino
 
 05.05.2022
-
 
 -->
 
