@@ -1,0 +1,22 @@
+Este código genera la documentación
+de la bd.
+
+Debe generarse y si se realizan
+cambios.
+
+sudo java -jar schemaspy-6.1.0.jar -vizjs -t pgsql -s public -db vaseddb -u vasedAdmin -p fundacion -host localhost -o /var/www/html/schemaSpy/ -dp postgresql-42.3.5.jar
+
+
+sudo java                 // permisos administrador
+-jar schemaspy-6.1.0.jar //driver que genera la estructura html
+-vizjs                   // para que no requiera driver de visualización.
+-t pgsql                 //dbms de la bd en este caso posgresql   
+-s public                //estructura donde van las tablas.
+-db vaseddb              //nombre de la base de datos.
+-u vasedAdmin            //usuario Administrador de base de datos.
+-p fundacion             //password del usuario administrador.
+-host localhost          // ip o host donde está la base de datos.
+-o /var/www/html/schemaSpy/     //ruta donde se genera el html.
+-dp postgresql-42.3.5.jar       //driver de postgresql.
+
+
